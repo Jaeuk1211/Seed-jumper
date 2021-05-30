@@ -7,6 +7,6 @@ Dept. of Software Graudation Project
 
 201735820 Jaeuk Kim
 
-201835523 Jeong Soomin 
+201835523 Soomin Jeong 
 
-201835523 Jeong Soomin 
+201935118 Suhyeon Lim
