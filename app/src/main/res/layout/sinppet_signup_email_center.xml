@@ -1,0 +1,41 @@
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_input1"
+        android:weightSum="10"
+        >
+        <TextView
+            android:id="@+id/SignupEmail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:fontFamily="@font/opensans_bold"
+            android:text="Email"
+            android:textColor="#191919"
+            android:textSize="13sp"
+            android:layout_weight="3"
+            android:textStyle="normal"/>
+
+        <EditText
+            android:id="@+id/editTextSignUpEmail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:includeFontPadding="false"
+            android:inputType="textEmailAddress"
+            android:textColor="#707070"
+            android:textSize="14sp"
+            android:background="@null"
+            android:layout_weight="7"/>
+
+    </LinearLayout>
+
+</merge>

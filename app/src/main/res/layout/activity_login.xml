@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="Seed\nJumper"
+            android:textColor="@color/colorAccent"
+            android:textSize="52dp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/opensans_bold"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                tools:text="Log in" />
+            <TextView
+                android:id="@+id/tvToYourAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/opensans"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                tools:text=" to your Account" />
+        </LinearLayout>
+        <include layout="@layout/sinppet_login_email_center" />
+        <include layout="@layout/sinppet_login_password_center" />
+        <TextView
+            android:id="@+id/textViewFindPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Forgot password?"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/buttonLogIn"
+            android:layout_width="300dp"
+            android:layout_height="62dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/colorAccent"
+            android:stateListAnimator="@null"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Don't have an account?"
+                android:textColor="#191919" />
+            <TextView
+                android:id="@+id/textViewSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="Sign Up"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textviewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="70dp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+    </LinearLayout>
+</RelativeLayout>
