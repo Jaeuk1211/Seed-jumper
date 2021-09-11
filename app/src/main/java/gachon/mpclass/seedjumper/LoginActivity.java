@@ -68,6 +68,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = editTextLoginPassword.getText().toString().trim();
         //get identification
 
+        // 로그인 구현 전까지 임시
+        Intent tempIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(tempIntent);
 
         /* *******Validation of email(is empty& validation)******** */
         if (TextUtils.isEmpty(email)) {
