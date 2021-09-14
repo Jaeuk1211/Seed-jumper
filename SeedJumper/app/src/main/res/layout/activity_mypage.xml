@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/mypage_topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mypage_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="26dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Slow And Steady,\nWins The Race."
+                android:textSize="65dp"
+                android:layout_marginBottom="90dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "마이페이지에서 운동 기록과\n성과를 한눈에 확인해 보세요."
+                android:textSize="25dp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650dp"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/mypage_scroll_setting"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/drawer"
+                android:layout_width="50dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="35dp"
+                android:background="#C1DEFAFB"
+                android:elevation="0dp" />
+
+            <ScrollView
+                android:id="@+id/exercise_days"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/exercise_calender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="운동 스케쥴러"
+                            android:textColor="@color/black"
+                            android:textSize="25dp" />
+
+                        <CalendarView
+                            android:id="@+id/calendarView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_marginRight="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.488"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/exercise_days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/mypage_detail_space"
+                            android:text="날자별 세부 운동 사항 기록이 들어갈 공간입니다.\n예시 글자\n예시 글자\n예시 글자"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:padding="15dp"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="30dp"/>
+                        <TextView
+                            android:id="@+id/exercise_days_ext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/mypage_detail_space2"
+                            android:text="날자별 세부 운동 사항 기록이 들어갈 공간입니다.\n이런거\n두어개 정도\n넣어놓기"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:padding="15dp"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="30dp"
+                            android:layout_margin="6dp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/exercise_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="70dp"
+                            android:text="누적 운동 시간"
+                            android:textColor="@color/black"
+                            android:textSize="25dp" />
+
+                        <ImageView
+                            android:id="@+id/graph"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/mypage_graph"
+                            android:layout_marginTop="-40dp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/exercise_compare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="15dp"
+                            android:text="줄넘기 횟수"
+                            android:textColor="@color/black"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:id="@+id/exercise_how"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="15dp"
+                            android:text="줄넘기 횟수가 저번달보다 증가했습니다."
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="15dp">
+                            <TextView
+                                android:id="@+id/exercise_num1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="723443"
+                                android:textColor="@color/black"
+                                android:textSize="30dp"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="15dp"/>
+                            <TextView
+                                android:id="@+id/exercise_unit1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="회"
+                                android:textColor="@color/black"
+                                android:textSize="17dp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="15dp"
+                            android:text="이번달 목표 까지"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="15dp">
+                            <TextView
+                                android:id="@+id/exercise_num2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="916"
+                                android:textColor="@color/black"
+                                android:textSize="30dp"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="15dp"/>
+                            <TextView
+                                android:id="@+id/exercise_unit2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="회"
+                                android:textColor="@color/black"
+                                android:textSize="17dp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="700dp"
+                        android:text="스크롤 확인 위한 텍스트"
+                        android:textColor="@color/black"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/mypage_scroll_handle" android:width="50dp" android:height="10dp" />
+</layer-list>
+
+
+
