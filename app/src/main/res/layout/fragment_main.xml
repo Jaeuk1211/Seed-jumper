@@ -5,6 +5,7 @@
     android:id="@+id/fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
     <TextView
@@ -43,7 +44,7 @@
             android:gravity="left|center_vertical"
             android:paddingLeft="18dip"
             android:text="목표 달성 체크"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="36px" />
 
     </LinearLayout>
@@ -70,7 +71,7 @@
             android:gravity="left|center_vertical"
             android:paddingLeft="18dip"
             android:text="일반 운동 모드"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="40px" />
 
 
@@ -98,7 +99,7 @@
             android:gravity="left|center_vertical"
             android:paddingLeft="18dip"
             android:text="코스 추천 모드"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="40px" />
 
     </LinearLayout>
