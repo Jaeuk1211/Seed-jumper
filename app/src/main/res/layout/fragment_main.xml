@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFFFFF"
+        android:paddingLeft="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="10dp"
+        android:text="오늘 줄넘기 횟수"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_flipper"
+        tools:ignore="DuplicateIds,MissingConstraints">
+
+        <Button
+            android:id="@+id/goal"
+            android:layout_width="match_parent"
+            android:layout_height="228dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/mainbutton_state"
+            android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+            android:drawablePadding="18dip"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="18dip"
+            android:text="목표 달성 체크"
+            android:textColor="@color/white"
+            android:textSize="36px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:duplicateParentState="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goRecipe"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/normal_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/mainbutton_state"
+            android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
+            android:drawablePadding="18dip"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="18dip"
+            android:text="일반 운동 모드"
+            android:textColor="@color/white"
+            android:textSize="40px" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:duplicateParentState="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goRecipe"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/recommend_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/mainbutton_state"
+            android:drawableLeft="@drawable/ic_baseline_alarm_24"
+            android:drawablePadding="18dip"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="18dip"
+            android:text="코스 추천 모드"
+            android:textColor="@color/white"
+            android:textSize="40px" />
+
+    </LinearLayout>
+
+</LinearLayout>
