@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "485698475665",
+    "project_id": "seedjumper-174ef",
+    "storage_bucket": "seedjumper-174ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485698475665:android:343cca045ecf14d95dd130",
+        "android_client_info": {
+          "package_name": "gachon.mpclass.seedjumper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485698475665-emhdj7qbcbbvama66kdp7nuhhk62atje.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gachon.mpclass.seedjumper",
+            "certificate_hash": "a4a562b0962838b3ef61c2f5722ad695c0e56f10"
+          }
+        },
+        {
+          "client_id": "485698475665-i5sgb75pmhiksa7phcdmph3ghvu2q7na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8KTDSxlkyMSv68rGMEHHqTPaVvhD1WHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485698475665-i5sgb75pmhiksa7phcdmph3ghvu2q7na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
