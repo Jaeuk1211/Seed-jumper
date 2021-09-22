@@ -18,6 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -38,8 +44,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     TextView textviewMessage;
     private TextView yourAccount, create;
     ProgressDialog progressDialog;
-//    FirebaseAuth firebaseAuth;
-//    FirebaseFirestore fStore;
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore fStore;
     String userID;
 
     SharedPreferences sh_Pref;
@@ -50,10 +56,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         //initializig firebase auth object
-//        firebaseAuth = FirebaseAuth.getInstance();//get instance to firebaseAuth
-//        fStore = FirebaseFirestore.getInstance();
-//
-//        /* ********if already logged in,finish this job********* */
+        firebaseAuth = FirebaseAuth.getInstance();//get instance to firebaseAuth
+        fStore = FirebaseFirestore.getInstance();
+
+        /* ********if already logged in,finish this job********* */
 //        if (firebaseAuth.getCurrentUser() != null) {
 //            finish();
 //            startActivity(new Intent(getApplicationContext(), LogoutActivity.class));
@@ -132,27 +138,27 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog.setMessage("Registering. Please wait...");
         progressDialog.show();
 
-//        //creating a new user
-//        firebaseAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            finish();
-//                            userID = firebaseAuth.getCurrentUser().getUid();
-//                            User user = new User(email, name);
-//                            //이메일, 이름, 패스워드 각각 firebase에 넣을 수 있도록 수정할 것 (참고 코드 그대로 복사한 것임)
-//                            fStore.collection("users").add(user);
-//
-//                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                        } else {
-//                            //If error occured
-//                            textviewMessage.setText("Error type\n - Email already registered\n -Password at least 6 digits \n - Server error");
-//                            Toast.makeText(SignupActivity.this, "Register error", Toast.LENGTH_SHORT).show();
-//                        }
-//                        progressDialog.dismiss();
-//                    }
-//                });
+        //creating a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            finish();
+                            userID = firebaseAuth.getCurrentUser().getUid();
+                            User user = new User(email, name, password);
+                            //이메일, 이름, 패스워드 각각 firebase에 넣을 수 있도록 수정할 것 (참고 코드 그대로 복사한 것임)
+                            fStore.collection("users").add(user);
+
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        } else {
+                            //If error occured
+                            textviewMessage.setText("Error type\n - Email already registered\n -Password at least 6 digits \n - Server error");
+                            Toast.makeText(SignupActivity.this, "Register error", Toast.LENGTH_SHORT).show();
+                        }
+                        progressDialog.dismiss();
+                    }
+                });
 
     }
 

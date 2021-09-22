@@ -13,6 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.regex.Pattern;
 
 
@@ -29,14 +34,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tvToYourAccount;
     ProgressDialog progressDialog;
     //define firebase object
-//    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        firebaseAuth = FirebaseAuth.getInstance();//use firebase get instance
-//
+        firebaseAuth = FirebaseAuth.getInstance();//use firebase get instance
+
 //        if (firebaseAuth.getCurrentUser() != null) {
 //            //if already logged in
 //            finish();//finish and go to Main activity
@@ -92,24 +97,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this,"Please keep the password format.",Toast.LENGTH_SHORT).show();
             return;
         }
-//        if(email!=null&&password!=null) {
-//            //Logging in the user
-//            //Check whether user login data equals data in the firebase
-//            firebaseAuth.signInWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            progressDialog.dismiss();
-//                            if (task.isSuccessful()) {
-//                                finish();
-//                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                            } else {
-//                                Toast.makeText(getApplicationContext(), "Login Failed! Please try again", Toast.LENGTH_LONG).show();
-//                                textviewMessage.setText("Passwords must consist of numbers, alphabets, \nand special symbols.\nPassword must be \nat least 8 characters long\n");
-//                            }
-//                        }
-//                    });
-//        }
+        if(email!=null&&password!=null) {
+            //Logging in the user
+            //Check whether user login data equals data in the firebase
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
+                            if (task.isSuccessful()) {
+                                finish();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Login Failed! Please try again", Toast.LENGTH_LONG).show();
+                                textviewMessage.setText("Passwords must consist of numbers, alphabets, \nand special symbols.\nPassword must be \nat least 8 characters long\n");
+                            }
+                        }
+                    });
+        }
 
         progressDialog.setMessage("Logging in. wait a moment please...");
         progressDialog.show();
@@ -128,15 +133,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             userLogin();
         }
 
-//        /* *******if click Signup button , can Signup ******** */
-//        if (view == textviewSignup) {
-//            startActivity(new Intent(this, SignupActivity.class));
-//        }
-//
-//        /* *******go to find password ******** */
-//        if (view == textviewFindPassword) {
-//            startActivity(new Intent(this, FindActivity.class));
-//        }
+        /* *******if click Signup button , can Signup ******** */
+        if (view == textviewSignup) {
+            startActivity(new Intent(this, SignupActivity.class));
+        }
+
+        /* *******go to find password ******** */
+        if (view == textviewFindPassword) {
+            startActivity(new Intent(this, FindActivity.class));
+        }
 
     }
 
