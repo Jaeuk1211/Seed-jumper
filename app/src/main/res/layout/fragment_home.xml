@@ -10,7 +10,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="156dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#FFFFFF"
         android:paddingLeft="20dp"
@@ -21,6 +21,19 @@
         android:textColor="#000000"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/todayjumping"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="10dp"
+        android:paddingBottom="10dp"
+        android:text="0회"
+        android:textColor="#000000"
+        android:textSize="33dp"
+        android:textStyle="bold"
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
