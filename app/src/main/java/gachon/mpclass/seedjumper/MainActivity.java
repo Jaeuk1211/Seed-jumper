@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     fragmentHome homeFragment;
-    fragmentExercise exerciseFragment;
+    fragmentGarden gardenFragment;
     fragmentMypage mypageFragment;
 
     @Override
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         homeFragment = new fragmentHome();
-        exerciseFragment = new fragmentExercise();
+        gardenFragment = new fragmentGarden();
         mypageFragment = new fragmentMypage();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout, homeFragment).commit();
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,homeFragment).commitAllowingStateLoss();
                         return true;
                     case R.id.tab2:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,exerciseFragment).commitAllowingStateLoss();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,gardenFragment).commitAllowingStateLoss();
                         return true;
                     case R.id.tab3:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,mypageFragment).commitAllowingStateLoss();

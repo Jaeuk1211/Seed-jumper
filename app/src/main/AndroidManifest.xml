@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".FindActivity" />
-        <activity android:name=".fragmentGarden"/>
+        <activity android:name=".ExerciseActivity"/>
 
     </application>
 

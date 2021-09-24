@@ -9,8 +9,8 @@
 
     <item
         android:id="@+id/tab2"
-        android:icon="@drawable/exercise"
-        android:title="Exercise"
+        android:icon="@drawable/garden"
+        android:title="Garden"
         />
 
     <item
