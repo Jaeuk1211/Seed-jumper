@@ -1,12 +1,13 @@
 package gachon.mpclass.seedjumper;
 
-
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,55 +18,45 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "MainActivity";
+    private static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
+    private static final String USERS_KEY = "users";
+    private static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
+    private static final String EMAIL_KEY = "email";
+    private static final String PASSWORD_KEY = "password";
+    private static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
 
-
-    EditText editTextSignUpEmail;
-    EditText editTextSignUpPassword, editTextSignUpPasswordConfirm;
-    EditText editTextSignUpNickname;
-    EditText editTextSignUpName;
-
-
-    Button buttonSignup;
-    ImageView buttonBack;
-    TextView textviewMessage;
+    private Button buttonSignup;
+    private ImageView buttonBack;
+    private TextView textviewMessage;
     private TextView yourAccount, create;
-    ProgressDialog progressDialog;
-    FirebaseAuth firebaseAuth;
-    FirebaseFirestore fStore;
-    String userID;
 
+    private EditText editTextSignUpEmail;
+    private EditText editTextSignUpPassword, editTextSignUpPasswordConfirm;
+    private EditText editTextSignUpName;
+    private EditText editTextSignUpNickname;
+
+    private FirebaseAuth mAuth;
+
+    ProgressDialog progressDialog;
     SharedPreferences sh_Pref;
     SharedPreferences.Editor toEdit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        //initializig firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();//get instance to firebaseAuth
-        fStore = FirebaseFirestore.getInstance();
-
-        /* ********if already logged in,finish this job********* */
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            finish();
-//            startActivity(new Intent(getApplicationContext(), LogoutActivity.class));
-//
-//        }
-        //initializing views
         editTextSignUpName = (EditText) findViewById(R.id.editTextSignUpName);
         editTextSignUpEmail = (EditText) findViewById(R.id.editTextSignUpEmail);
         editTextSignUpPassword = (EditText) findViewById(R.id.editTextSignUpPassword);
@@ -81,16 +72,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         yourAccount.setText(" your Account");
         buttonSignup.setOnClickListener(this);
         buttonBack.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
     }
 
-
-    //Register(Sign up)
     private void registerUser() {
-        //Get the email & password that the user enters.
-        String email = editTextSignUpEmail.getText().toString().trim();
+        final String name = editTextSignUpName.getText().toString().trim();
+        final String email = editTextSignUpEmail.getText().toString().trim();
         String password = editTextSignUpPassword.getText().toString().trim();
         String confirmPassword = editTextSignUpPasswordConfirm.getText().toString().trim();
-        String name = editTextSignUpName.getText().toString();
 
         //Check whether the email and password are empty or not.
         if (TextUtils.isEmpty(email)) {
@@ -138,28 +129,36 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog.setMessage("Registering. Please wait...");
         progressDialog.show();
 
-        //creating a new user
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            finish();
-                            userID = firebaseAuth.getCurrentUser().getUid();
-                            User user = new User(email, name, password);
-                            //이메일, 이름, 패스워드 각각 firebase에 넣을 수 있도록 수정할 것 (참고 코드 그대로 복사한 것임)
-                            fStore.collection("users").add(user);
-
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            String uid = mAuth.getCurrentUser().getUid();
+                            User newUser = new User(uid, email, name, password);
+                            //newUser.setCreditCard(creditCard);
+                            FirebaseDatabase.getInstance().getReference("users")
+                                    .child(uid)
+                                    .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                         } else {
-                            //If error occured
-                            textviewMessage.setText("Error type\n - Email already registered\n -Password at least 6 digits \n - Server error");
-                            Toast.makeText(SignupActivity.this, "Register error", Toast.LENGTH_SHORT).show();
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException)
+                                Toast.makeText(getApplicationContext(), "Email Already Exists!!", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
-                        progressDialog.dismiss();
                     }
                 });
-
     }
 
     /* *******Register Button ******** */

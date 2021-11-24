@@ -5,14 +5,16 @@ public class User {
     private String email;
     private String pwd;
     private String name;
+    private String id;
 
     public User() {
     }
 
-    public User(String email, String name, String pwd) {
+    public User(String id, String email, String name, String pwd) {
         this.email = email;
         this.name = name;
         this.pwd = pwd;
+        this.id = id;
     }
 
     // getter
@@ -28,6 +30,8 @@ public class User {
         return pwd;
     }
 
+    public String getId() { return id;  }
+
     //setter
     public void setEmail(String email) {
         this.email = email;
@@ -40,6 +44,9 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public void setId(String id) { this.id = id;
     }
 
 }
