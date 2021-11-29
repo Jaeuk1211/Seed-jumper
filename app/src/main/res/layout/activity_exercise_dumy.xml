@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="650dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/exercise_background"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
+            <ProgressBar
+                android:id="@+id/exercise_progress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar_custom"
+                android:layout_width="260dp"
+                android:layout_height="13dp"
+                android:max="100"
+                android:progress="50"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Good!"
+            android:textSize="50dp"
+            android:fontFamily="@font/lobster_regular"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textColor="@color/teal_700"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/combo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="443"
+                android:textSize="40dp"
+                android:fontFamily="@font/opensans_bold"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/purple_200"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combo"
+                android:textSize="35dp"
+                android:fontFamily="@font/opensans"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="15dp"
+                android:textColor="#64D2D2"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/exercise_plant"
+            android:layout_width="fill_parent"
+            android:layout_height="450dp"
+            android:layout_gravity="center"
+            android:src="@drawable/one_tulip" />
+
+    </LinearLayout>
+    
+
+
+
+</LinearLayout>
+
+
+
