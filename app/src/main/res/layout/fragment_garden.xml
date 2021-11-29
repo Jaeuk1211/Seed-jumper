@@ -25,14 +25,45 @@
                 android:id="@+id/garden_garden"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/garden_garden"
-                android:paddingTop="50dp"/>
+                android:paddingTop="50dp"
+                android:src="@drawable/garden_garden" />
 
             <ImageView
-                android:id="@+id/plantCoordi"
+                android:id="@+id/plantCoordi1"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
-                />
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi5"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi6"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi7"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi8"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+            <ImageView
+                android:id="@+id/plantCoordi9"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
 
         </FrameLayout>
 
@@ -40,7 +71,7 @@
         <LinearLayout
             android:id="@+id/objects"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="191dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:background="@drawable/mypage_scroll_setting"
@@ -50,39 +81,39 @@
                 android:id="@+id/change_object"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/garden_button_setting"
-                android:background="@color/white"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:src="@drawable/garden_button_setting" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/garden_object_border"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/garden_object_border">
 
                     <ImageButton
                         android:id="@+id/plant_test"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src = "@drawable/garden_plant1"
-                        android:background="@color/white"/>
+                        android:background="@color/white"
+                        android:src="@drawable/garden_plant1" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/garden_object_border"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/garden_object_border">
 
                 </LinearLayout>
 
@@ -93,7 +124,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
 
         </LinearLayout>
 

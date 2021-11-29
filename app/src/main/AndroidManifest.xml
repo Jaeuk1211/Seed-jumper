@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".FindActivity" />
         <activity android:name=".ExerciseActivity"/>
+        <activity android:name=".gardenActivity"/>
 
     </application>
 

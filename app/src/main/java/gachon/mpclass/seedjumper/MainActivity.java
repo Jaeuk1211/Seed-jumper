@@ -1,5 +1,6 @@
 package gachon.mpclass.seedjumper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,homeFragment).commitAllowingStateLoss();
                         return true;
                     case R.id.tab2:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,gardenFragment).commitAllowingStateLoss();
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,gardenActivity).commitAllowingStateLoss();
+                        Intent intent = new Intent(getApplicationContext(), gardenActivity.class);
+                        startActivity(intent);
                         return true;
                     case R.id.tab3:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout,mypageFragment).commitAllowingStateLoss();
@@ -48,4 +51,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }

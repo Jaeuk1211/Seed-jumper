@@ -1,4 +1,5 @@
 package gachon.mpclass.seedjumper;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,16 @@ public class fragmentGarden extends Fragment {
 
     boolean i = true;
     ImageView plant;
+    View decorView;
+    private int	uiOption;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_garden, container, false);
 
-        plant = view.findViewById(R.id.plantCoordi);
+        plant = view.findViewById(R.id.plantCoordi1);
 
 
         ImageButton object = view.findViewById(R.id.change_object);
@@ -42,7 +46,9 @@ public class fragmentGarden extends Fragment {
             }
         });
 
-        return view;
 
+
+        return view;
     }
+
 }

@@ -22,7 +22,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_gravity="bottom"
-        android:background="@color/mainColor"
+        android:background="@color/white"
         app:menu="@menu/menu_bottom"
         app:itemIconTint="@drawable/menu_selector"
         app:itemTextColor="@drawable/menu_selector"
