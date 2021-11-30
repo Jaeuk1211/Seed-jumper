@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginRight="30dp"
+    android:background="@drawable/garden_object_border"
+    android:orientation = "vertical">
+
+    <ImageButton
+        android:id="@+id/plant_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@drawable/empty_object"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/plantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noname"/>
+
+</LinearLayout>

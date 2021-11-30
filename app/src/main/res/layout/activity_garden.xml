@@ -31,39 +31,48 @@
             <ImageView
                 android:id="@+id/plantCoordi1"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi2"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi3"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi4"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi5"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi6"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi7"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi8"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
             <ImageView
                 android:id="@+id/plantCoordi9"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"/>
 
         </FrameLayout>
 
@@ -83,10 +92,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:src="@drawable/garden_button_setting" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/objects_listview"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
