@@ -1,6 +1,8 @@
 package gachon.mpclass.seedjumper;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String email;
     private String pwd;
@@ -31,6 +33,7 @@ public class User {
     }
 
     public String getId() { return id;  }
+
 
     //setter
     public void setEmail(String email) {

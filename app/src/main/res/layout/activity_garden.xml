@@ -9,17 +9,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/garden_garden">
+
+        <ImageButton
+            android:id="@+id/clean_all"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/garden_clean"
+            android:backgroundTint="#9bcfb8"
+            android:layout_gravity="right"/>
 
         <FrameLayout
             android:id="@+id/top_garden"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="100dp">
+
+            android:layout_marginBottom="80dp">
 
 <!--            <ImageView-->
 <!--                android:id="@+id/garden_garden"-->
