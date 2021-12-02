@@ -38,7 +38,7 @@ public class gardenActivity extends AppCompatActivity {
     boolean i = true;
     private RecyclerView mRecyclerView;
     boolean[] enable = {true, true, true, true, true, true, true, true, true};
-    int[][] location = {{370, 240}, {220, 340}, {520, 340}, {30, 450}, {360, 460}, {680, 450}, {210, 570}, {520, 570}, {400, 690}};
+    int[][] location = {{370, 240}, {220, 340}, {540, 340}, {30, 450}, {360, 460}, {690, 460}, {210, 570}, {540, 570}, {400, 690}};
     int x, y;
     private String[] plantName = {"dl", "rs", "tp", "sf", "fs"};
     int count =0;
@@ -59,7 +59,9 @@ public class gardenActivity extends AppCompatActivity {
         loginUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = loginUser != null ? loginUser.getUid() : null;
 
-        DatabaseReference badge = userReference.child("users").child(uid).child("garden");
+
+        //수정이 필요해 보입니다......
+        DatabaseReference badge = userReference.child("users").child(uid).child("garden").child("badge");
         Log.d("rental", "why?");
         badge.addValueEventListener(new ValueEventListener() {
             @Override
