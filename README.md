@@ -6,6 +6,8 @@ Gachon univ. Dept. of Software Graudation Project
 
 project name : Seed Jumper
 
+#
+
 
 [Team members info]
 
