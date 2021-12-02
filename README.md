@@ -14,3 +14,13 @@ project name : Seed Jumper
 201835523 Soomin Jeong
 
 201935118 Suhyeon Lim
+
+--
+
+We refered some insights from >
+
+Google Mediapipe
+https://github.com/google/mediapipe/tree/master/mediapipe
+
+YouTube Video : Real-Time 3D Pose Detection & Pose Classification | Mediapipe | OpenCV | Python
+https://www.youtube.com/watch?v=aySurynUNAw&t=897s
