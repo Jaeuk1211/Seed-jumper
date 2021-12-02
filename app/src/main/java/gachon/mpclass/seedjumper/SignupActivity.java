@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
@@ -47,10 +48,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText editTextSignUpNickname;
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference();
+
 
     ProgressDialog progressDialog;
-    SharedPreferences sh_Pref;
-    SharedPreferences.Editor toEdit;
+
 
 
     @Override
@@ -105,12 +108,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             editTextSignUpEmail.requestFocus();
             return;
         }
-        if (!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", password)) {
+        if (!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{6,20}$", password)) {
             Toast.makeText(this, "Please keep the password format.", Toast.LENGTH_SHORT).show();
             editTextSignUpPassword.requestFocus();
             return;
         }
-        if (!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", confirmPassword)) {
+        if (!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{6,20}$", confirmPassword)) {
             Toast.makeText(this, "Please keep the confirm password format.", Toast.LENGTH_SHORT).show();
             editTextSignUpPasswordConfirm.requestFocus();
             return;
@@ -144,6 +147,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        setInitialRecord();
                                         Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                     } else {
@@ -151,6 +155,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                     }
                                 }
                             });
+
+
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException)
                                 Toast.makeText(getApplicationContext(), "Email Already Exists!!", Toast.LENGTH_SHORT).show();
@@ -159,6 +165,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+    }
+    public void setInitialRecord() {
+        String uid = mAuth.getCurrentUser().getUid();
+        Record record = new Record(0, 0);
+        databaseReference.child("users").child(uid).child("record").setValue(record);
+
     }
 
     /* *******Register Button ******** */
