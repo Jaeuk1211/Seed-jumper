@@ -13,4 +13,4 @@ project name : Seed Jumper
 
 201835523 Soomin Jeong
 
-201935118 Suhyun Lim
+201935118 Suhyeon Lim
