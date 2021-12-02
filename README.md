@@ -15,9 +15,9 @@ project name : Seed Jumper
 
 201935118 Suhyeon Lim
 
---
 
-We refered some insights from >
+
+#We refered some insights from >
 
 Google Mediapipe
 https://github.com/google/mediapipe/tree/master/mediapipe
