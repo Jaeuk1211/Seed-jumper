@@ -6,7 +6,11 @@ Gachon univ. Dept. of Software Graudation Project
 
 project name : Seed Jumper
 
+
 [Team members info]
+
 201735820 Jaeuk Kim
-201835523 Sumin Jeong
+
+201835523 Soomin Jeong
+
 201935118 Suhyun Lim
