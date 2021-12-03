@@ -29,6 +29,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class fragmentHome extends Fragment {
 
     private TextView amount_calorie_consumption;
+    private Button normal_btn;
+    private Button recommend_btn;
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -47,14 +49,27 @@ public class fragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         amount_calorie_consumption = view.findViewById(R.id.amount_calorie_consumption);
+        normal_btn = (Button) view.findViewById(R.id.normal_exercise);
+        recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
 
-        Button normal_btn = (Button) view.findViewById(R.id.normal_exercise);
+        //일반 운동 모드(Endless mode)
         normal_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(view.getContext(),ExerciseActivity.class);
                 view.getContext().startActivity(intent);
+
+            }
+        });
+
+        //운동 추천 모드
+        recommend_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Intent intent = new Intent(view.getContext(),ExerciseActivity.class);
+                //view.getContext().startActivity(intent);
 
             }
         });

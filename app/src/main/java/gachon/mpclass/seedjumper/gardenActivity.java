@@ -256,7 +256,7 @@ public class  gardenActivity extends AppCompatActivity {
                             break;
                         case 18:
                             iv[addIv] = new ImageView(getApplicationContext());
-                            iv[addIv].setImageResource(R.drawable.empty);
+                            iv[addIv].setImageResource(R.drawable.empty_object);
                             flowerName = "18";
                             break;
                     }
@@ -372,7 +372,7 @@ public class  gardenActivity extends AppCompatActivity {
                             break;
                         case 18:
                             iv[addIv] = new ImageView(getApplicationContext());
-                            iv[addIv].setImageResource(R.drawable.empty);
+                            iv[addIv].setImageResource(R.drawable.empty_object);
                             break;
                     }
                     iv[addIv].setLayoutParams(new ViewGroup.LayoutParams(width, height));

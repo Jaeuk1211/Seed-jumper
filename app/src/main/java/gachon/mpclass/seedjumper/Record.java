@@ -23,8 +23,8 @@ public class Record {
         return calorie;
     }
 
-    public void getTime(int time){
-        this.time = time;
+    public int getTime(){
+        return time;
     }
 
     public void setCount(int count){

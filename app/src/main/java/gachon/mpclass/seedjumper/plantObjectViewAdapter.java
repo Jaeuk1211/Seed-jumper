@@ -85,16 +85,16 @@ public class plantObjectViewAdapter extends RecyclerView.Adapter<plantObjectView
                     holder.plantItem.setBackgroundResource(R.drawable.bundle_freesia);
                     break;
                 case 15:
-                    holder.plantItem.setBackgroundResource(R.drawable.chair_thumbnail);
+                    holder.plantItem.setBackgroundResource(R.drawable.chair);
                     break;
                 case 16:
-                    holder.plantItem.setBackgroundResource(R.drawable.lamp_thumbnail);
+                    holder.plantItem.setBackgroundResource(R.drawable.lamp);
                     break;
                 case 17:
-                    holder.plantItem.setBackgroundResource(R.drawable.fence_thumbnail);
+                    holder.plantItem.setBackgroundResource(R.drawable.fence);
                     break;
                 case 18:
-                    holder.plantItem.setBackgroundResource(R.drawable.empty_thumbnail);
+                    holder.plantItem.setBackgroundResource(R.drawable.empty_object);
                     break;
             }
         }
