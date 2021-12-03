@@ -27,97 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_gravity="center"
-
             android:layout_marginBottom="80dp">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/garden_garden"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingTop="50dp"-->
-<!--                android:src="@drawable/garden_garden" />-->
-
-<!--            <AbsoluteLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent">-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi1"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:layout_x="48.8dp"-->
-<!--                    android:layout_y="30dp"/>-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi2"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:layout_x="97.6dp"-->
-<!--                    android:layout_y="30dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi3"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:layout_x="146.5dp"-->
-<!--                    android:layout_y="50dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi4"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/bundle_dandelion"-->
-<!--                    android:layout_x="195.2dp"-->
-<!--                    android:layout_y="85dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi5"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:layout_x="244dp"-->
-<!--                    android:layout_y="170dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi6"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/bundle_rose"-->
-<!--                    android:layout_x="293dp"-->
-<!--                    android:layout_y="70dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi7"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/seed4"-->
-<!--                    android:layout_x="293dp"-->
-<!--                    android:layout_y="70dp"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi8"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:layout_x="97.6dp"-->
-<!--                    android:layout_y="70dp"/>-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/plantCoordi9"-->
-<!--                    android:layout_width="67dp"-->
-<!--                    android:layout_height="67dp"-->
-<!--                    android:scaleType="fitCenter"-->
-<!--                    android:background="@drawable/one_tulip"-->
-<!--                    android:layout_x="146.5dp"-->
-<!--                    android:layout_y="70dp"/>-->
-
-
-<!--            </AbsoluteLayout>-->
         </FrameLayout>
 
 
@@ -145,45 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:scrollbars="horizontal" />
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="80dp"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:layout_marginRight="30dp"-->
-<!--                    android:background="@drawable/garden_object_border">-->
-
-<!--                    <ImageButton-->
-<!--                        android:id="@+id/plant_test"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:background="@color/white"-->
-<!--                        android:src="@drawable/garden_plant1" />-->
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="80dp"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:layout_marginRight="30dp"-->
-<!--                    android:background="@drawable/garden_object_border">-->
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="80dp"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="@drawable/garden_object_border">-->
-
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
 
         </LinearLayout>
 

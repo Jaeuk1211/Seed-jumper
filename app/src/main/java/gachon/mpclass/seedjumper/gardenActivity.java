@@ -106,7 +106,6 @@ public class  gardenActivity extends AppCompatActivity {
             }
         });
 
-        Log.d("objects0", Integer.toString(count));
 
         //리사이클러뷰 표시
         ImageButton object = findViewById(R.id.change_object);
@@ -280,7 +279,6 @@ public class  gardenActivity extends AppCompatActivity {
                 }
             }
         });
-        Log.d("순서", "44444444444444444444444444444444444444444444444444444");
 
 
     }
