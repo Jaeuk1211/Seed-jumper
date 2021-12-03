@@ -37,6 +37,7 @@ public class plantObjectViewAdapter extends RecyclerView.Adapter<plantObjectView
         if (item.getPlantName().equalsIgnoreCase("noname")) {
             holder.plantItem.setBackgroundResource(R.drawable.empty_object);
         } else {
+            //Log.d("viewInfo", item.getPlantName() + ", "+ Integer.toString(position));
             switch (position) {
                 case 0:
                     holder.plantItem.setBackgroundResource(R.drawable.seed6);
@@ -78,10 +79,22 @@ public class plantObjectViewAdapter extends RecyclerView.Adapter<plantObjectView
                     holder.plantItem.setBackgroundResource(R.drawable.seed4);
                     break;
                 case 13:
-                    holder.plantItem.setBackgroundResource(R.drawable.one_yellowfreesia3);
+                    holder.plantItem.setBackgroundResource(R.drawable.one_yellowfreesia4);
                     break;
                 case 14:
                     holder.plantItem.setBackgroundResource(R.drawable.bundle_freesia);
+                    break;
+                case 15:
+                    holder.plantItem.setBackgroundResource(R.drawable.chair_thumbnail);
+                    break;
+                case 16:
+                    holder.plantItem.setBackgroundResource(R.drawable.lamp_thumbnail);
+                    break;
+                case 17:
+                    holder.plantItem.setBackgroundResource(R.drawable.fence_thumbnail);
+                    break;
+                case 18:
+                    holder.plantItem.setBackgroundResource(R.drawable.empty_thumbnail);
                     break;
             }
         }
@@ -109,18 +122,15 @@ public class plantObjectViewAdapter extends RecyclerView.Adapter<plantObjectView
 
         public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
-            Log.d("adapter2222", "클릭되었습니다.");
             plantItem = itemView.findViewById(R.id.plant_img);
             plantName = itemView.findViewById(R.id.plantName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("adapter0", "클릭되었습니다.");
                     int pos = getAdapterPosition();
                     if (listener != null) {
                         listener.OnItemClick(ViewHolder.this, v, pos);
-                        Log.d("adapter1", "클릭되었습니다.");
                     }
                 }
             });
@@ -131,6 +141,10 @@ public class plantObjectViewAdapter extends RecyclerView.Adapter<plantObjectView
 
     public String getName(int i) {
         return mList.get(i).getPlantName();
+    }
+
+    public void setName(String itemCode) {
+        mList.get(Integer.parseInt(itemCode)).setPlantName(itemCode);
     }
 
     public void addItem(String plantName){
