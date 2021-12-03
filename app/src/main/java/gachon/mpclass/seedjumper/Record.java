@@ -1,15 +1,18 @@
 package gachon.mpclass.seedjumper;
 
+//운동 기록: 횟수, 칼로리, 시간
 public class Record {
 
     private int count;
     private int calorie;
+    private int time;
 
     public Record(){}
 
-    public Record(int count, int calorie){
+    public Record(int count, int calorie, int time){
         this.count = count;
         this.calorie = calorie;
+        this.time = time;
     }
 
     public int getCount(){
@@ -20,6 +23,10 @@ public class Record {
         return calorie;
     }
 
+    public void getTime(int time){
+        this.time = time;
+    }
+
     public void setCount(int count){
         this.count = count;
     }
@@ -27,5 +34,11 @@ public class Record {
     public void setCalorie(int calorie){
         this.calorie = calorie;
     }
+
+    public void setTime(int time){
+        this.time = time;
+    }
+
+
 
 }

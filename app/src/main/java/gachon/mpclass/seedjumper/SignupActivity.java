@@ -166,10 +166,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
+    //총 운동시간 초기 데이터 구축
     public void setInitialRecord() {
         String uid = mAuth.getCurrentUser().getUid();
-        Record record = new Record(0, 0);
-        databaseReference.child("users").child(uid).child("record").setValue(record);
+        Record record = new Record(0, 0,0);
+        databaseReference.child("users").child(uid).child("record").child("total").setValue(record);
 
     }
 

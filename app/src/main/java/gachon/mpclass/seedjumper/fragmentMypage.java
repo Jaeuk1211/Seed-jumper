@@ -3,6 +3,7 @@ package gachon.mpclass.seedjumper;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -24,6 +33,20 @@ public class fragmentMypage extends Fragment{
     Button goToGarden;
     int quoteNum = 0;
     TextView quoteText;
+
+    private TextView userName;
+
+    FirebaseAuth firebaseAuth;
+    private String uid;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        firebaseAuth = FirebaseAuth.getInstance();//get instance to firebaseAuth
+        uid = firebaseAuth.getCurrentUser().getUid();
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +55,7 @@ public class fragmentMypage extends Fragment{
         targetView = view.findViewById(R.id.content);
         drawerButton = view.findViewById(R.id.drawer);
         quoteText = view.findViewById(R.id.quote);
+        userName = view.findViewById(R.id.user_name);
 
         Random random = new Random();
         quoteNum = random.nextInt(5);
@@ -72,6 +96,24 @@ public class fragmentMypage extends Fragment{
         }
 
         drawerButton.setOnClickListener(new DrawButtonClickListener());
+
+        //사용자의 이름 불러오기
+        DatabaseReference user = FirebaseDatabase.getInstance().getReference("users").child(uid);
+        user.child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.getValue(String.class);
+                userName.setText(name + "님 반갑습니다");
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("fragmentHome", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
 
 
 //        goToGarden.setOnClickListener(new View.OnClickListener(){
