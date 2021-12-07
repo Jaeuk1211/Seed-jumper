@@ -6,6 +6,7 @@ import mediapipe as mp
 import matplotlib as plt
 import time
 import playsound
+import PyObjC
 
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
@@ -243,7 +244,7 @@ while camera_video.isOpened():
         cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
     else :
         if percent!= 0 and percent%10 == 0 :
-            playsound.playsound(str(percent)+'.mp3')
+            playsound.playsound('Python/numaudio/'+ str(percent)+'.mp3')
         
         cv2.putText(frame, '{}/100'.format(percent), (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 2)
 
