@@ -5,8 +5,11 @@ from time import time
 import mediapipe as mp
 import matplotlib as plt
 import time
+
+# For sound play, need two libraries
+# 1. pip install playsound 
+# 2. pip install PyobjC
 import playsound
-import PyObjC
 
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
@@ -191,6 +194,7 @@ combosum = 0
 flag = 0
 t1 = 0
 t2 = 0
+soundflag = 0
 
 # Iterate until the webcam is accessed successfully.
 while camera_video.isOpened():
@@ -238,13 +242,18 @@ while camera_video.isOpened():
                 combosum = combosum + combo
                 combo = 0
 
-            
+    
     # Display the frame.
     if percent >= 100 :
         cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
     else :
-        if percent!= 0 and percent%10 == 0 :
+        if percent!= 0 and percent%10 == 0 and soundflag == 0:
             playsound.playsound('Python/numaudio/'+ str(percent)+'.mp3')
+            soundflag = 1
+        else :
+            if percent%10 != 0 :
+                soundflag = 0
+            
         
         cv2.putText(frame, '{}/100'.format(percent), (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 2)
 
