@@ -6,6 +6,7 @@ import mediapipe as mp
 import matplotlib as plt
 import time
 import socket
+import pygame
 
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
@@ -16,6 +17,9 @@ pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.3, model_
 # Initializing mediapipe drawing class, useful for annotation.
 mp_drawing = mp.solutions.drawing_utils
 
+# Initializing pygame module for audio feedback
+pygame.init()
+sound = pygame.mixer.music
 
 def detectPose(image, pose, display=True):
     '''
@@ -261,6 +265,14 @@ while camera_video.isOpened():
         endtime = time.time()
         break
     else:
+        if percent!= 0 and percent%10 == 0 and soundflag == 0:
+            sound.load('Python/numaudio/'+ str(percent)+'.mp3')
+            sound.play()
+            soundflag = 1
+        else :
+            if percent%10 != 0 :
+                soundflag = 0
+
         cv2.putText(frame, '{}/100'.format(percent), (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 0), 2)
         output = str(percent) + "#" + str(combo)
         conn.sendall(output.encode())

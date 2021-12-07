@@ -5,11 +5,7 @@ from time import time
 import mediapipe as mp
 import matplotlib as plt
 import time
-
-# For sound play, need two libraries
-# 1. pip install playsound 
-# 2. pip install PyobjC
-import playsound
+import pygame
 
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
@@ -20,6 +16,10 @@ pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.3, model_
 # Initializing mediapipe drawing class, useful for annotation.
 mp_drawing = mp.solutions.drawing_utils 
 
+# Initializing pygame module for audio feedback
+pygame.mixer.init()
+sound = pygame.mixer.music
+sound.set_volume(1.0)
 
 def detectPose(image, pose, display=True):
     '''
@@ -248,7 +248,8 @@ while camera_video.isOpened():
         cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
     else :
         if percent!= 0 and percent%10 == 0 and soundflag == 0:
-            playsound.playsound('Python/numaudio/'+ str(percent)+'.mp3')
+            sound.load('Python/numaudio/'+ str(percent)+'.mp3')
+            sound.play()
             soundflag = 1
         else :
             if percent%10 != 0 :
