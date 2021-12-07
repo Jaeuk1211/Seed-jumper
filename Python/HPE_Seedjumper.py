@@ -5,6 +5,7 @@ from time import time
 import mediapipe as mp
 import matplotlib as plt
 import time
+import playsound
 
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
@@ -239,9 +240,12 @@ while camera_video.isOpened():
             
     # Display the frame.
     if percent >= 100 :
-      cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
+        cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
     else :
-      cv2.putText(frame, '{}/100'.format(percent), (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 2)
+        if percent!= 0 and percent%10 == 0 :
+            playsound.playsound(str(percent)+'.mp3')
+        
+        cv2.putText(frame, '{}/100'.format(percent), (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 2)
 
 
     # The Line for the tip of the foot
