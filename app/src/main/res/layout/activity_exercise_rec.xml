@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="650dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/exercise_background"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Which Mood?"
+            android:textSize="50dp"
+            android:fontFamily="@font/lobster_regular"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textColor="@color/teal_700"/>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" >
+
+            <Button
+                android:id="@+id/pop"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/mainbutton_state"
+                android:drawableLeft="@drawable/ic_genre_pop"
+                android:drawablePadding="18dip"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="18dip"
+                android:text="느낌있는 팝"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" >
+
+            <Button
+                android:id="@+id/dance"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/mainbutton_state"
+                android:drawableLeft="@drawable/ic_genre_dance"
+                android:drawablePadding="18dip"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="18dip"
+                android:text="신나는 댄스"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" >
+
+            <Button
+                android:id="@+id/classic"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/mainbutton_state"
+                android:drawableLeft="@drawable/ic_genre_classic"
+                android:drawablePadding="18dip"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="18dip"
+                android:text="차분한 클래식"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" >
+
+            <Button
+                android:id="@+id/rock"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/mainbutton_state"
+                android:drawableLeft="@drawable/ic_genre_rock"
+                android:drawablePadding="18dip"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="18dip"
+                android:text="역동적인 락"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" >
+
+            <Button
+                android:id="@+id/hiphop"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/mainbutton_state"
+                android:drawableLeft="@drawable/ic_genre_hiphop"
+                android:drawablePadding="18dip"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="18dip"
+                android:text="리드미컬한 힙합"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    
+
+
+
+</LinearLayout>
+
+
+
