@@ -170,7 +170,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public void setInitialRecord() {
         String uid = mAuth.getCurrentUser().getUid();
         Record record = new Record(0, 0);
-        databaseReference.child("users").child(uid).child("record").setValue(record);
+        databaseReference.child("users").child(uid).child("record").child("total").setValue(record);
+        databaseReference.child("users").child(uid).child("record").child("average").setValue(record);
+        databaseReference.child("users").child(uid).child("record").child("daily").setValue(record);
 
     }
 
