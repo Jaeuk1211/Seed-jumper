@@ -67,12 +67,12 @@ public class fragmentHome extends Fragment {
             }
         });
 
-        //사용자의 총 칼로리 소모량 세팅 (이후 하루 운동 소모량으로 수정 예정)
+        //사용자의 하루 운동 소모량
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
-        databaseReference.child("record").child("total").child("calorie").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("record").child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int calorie = (int) dataSnapshot.getValue(Integer.class);
+                double calorie = (double) dataSnapshot.getValue(Double.class);
                 //Record record = dataSnapshot.getValue(Record.class);
                 amount_calorie_consumption.setText(calorie + "kcal");
 
