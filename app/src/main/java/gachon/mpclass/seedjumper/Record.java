@@ -11,7 +11,7 @@ public class Record {
 
     public Record(int count, int time){
         this.count = count;
-        this.calorie = time * 0.6;
+        this.calorie = time * 0.16;
         this.time = time;
     }
 
