@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.dinuscxj.progressbar.CircleProgressBar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,11 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class fragmentHome extends Fragment {
+public class fragmentHome extends Fragment implements CircleProgressBar.ProgressFormatter{
 
     private TextView amount_calorie_consumption;
     private Button normal_btn;
     private Button recommend_btn;
+    private double calorie, planCalorie;
+
+    CircleProgressBar circleProgressBar;
+    private int progress;
+    private static final String DEFAULT_PATTERN = "%d%%";
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -44,6 +50,7 @@ public class fragmentHome extends Fragment {
         amount_calorie_consumption = view.findViewById(R.id.amount_calorie_consumption);
         normal_btn = (Button) view.findViewById(R.id.normal_exercise);
         recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
+        circleProgressBar = view.findViewById(R.id.cpb_circlebar);
 
         //일반 운동 모드(Endless mode)
         normal_btn.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +74,21 @@ public class fragmentHome extends Fragment {
             }
         });
 
-        //사용자의 총 칼로리 소모량 세팅 (이후 하루 운동 소모량으로 수정 예정)
+        //사용자의 하루 운동 소모량
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
-        databaseReference.child("record").child("total").child("calorie").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("record").child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int calorie = (int) dataSnapshot.getValue(Integer.class);
+                calorie = (double) dataSnapshot.getValue(Double.class);
                 //Record record = dataSnapshot.getValue(Record.class);
                 amount_calorie_consumption.setText(calorie + "kcal");
 
+                //원형 프로그래스 바 - 사용자의 목표 칼로리 대비 얼마나 많은 칼로리를 소모했느냐
+                planCalorie = 66;
+                progress = (int)( calorie / planCalorie * 100);
+                if (progress > 100)
+                    progress = 100;
+                circleProgressBar.setProgress(progress);
             }
 
             @Override
@@ -87,21 +100,8 @@ public class fragmentHome extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Record record = snapshot.getValue(Record.class);
-//                    amount_calorie_consumption.setText(record.getCalorieConsumption());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//        });
-
-
+    @Override
+    public CharSequence format(int progress, int max) {
+        return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
+    }
 }

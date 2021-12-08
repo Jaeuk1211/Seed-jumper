@@ -4,14 +4,14 @@ package gachon.mpclass.seedjumper;
 public class Record {
 
     private int count;
-    private int calorie;
+    private double calorie; //55kg 기준 1분에 10kcal 소모
     private int time;
 
     public Record(){}
 
-    public Record(int count, int calorie, int time){
+    public Record(int count, int time){
         this.count = count;
-        this.calorie = calorie;
+        this.calorie = time * 0.6;
         this.time = time;
     }
 
@@ -19,7 +19,7 @@ public class Record {
         return count;
     }
 
-    public int getCalorie(){
+    public double getCalorie(){
         return calorie;
     }
 
