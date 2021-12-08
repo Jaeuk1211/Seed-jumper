@@ -3,9 +3,19 @@ package gachon.mpclass.seedjumper;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,14 +32,43 @@ public class ExerciseActivity extends AppCompatActivity {
     String response = "";
     int percent = 0;
     TextView combo;
+    TextView progressPer;
+    //private ProgressBar percentage;
+    long start;
+    long end;
+    long exerciseTime;
+    FrameLayout garden;
+    FirebaseUser loginUser;
+    String uid;
+    private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference userReference = userDatabase.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_dumy);
+        setContentView(R.layout.activity_exercise_endless);
+
+        loginUser = FirebaseAuth.getInstance().getCurrentUser();
+        uid = loginUser != null ? loginUser.getUid() : null;
+
+        DatabaseReference time = userReference.child("users").child(uid).child("record").child("total").child("time");
+        time.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    exerciseTime = ds.getValue(Long.class);//아이템 획득 기능이 추가되면 거기 맞추어 타입 바꾸기
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         combo = findViewById(R.id.combo);
-
+        //percentage = findViewById(R.id.exercise_progress);
+        //progressPer = findViewById(R.id.percent);
         message = "ok";
 
         MyClientTask myClientTask = new MyClientTask("172.30.1.15", 7777, message);
@@ -54,6 +93,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
             Socket socket = null;
             myMessage = myMessage.toString();
+            start = System.currentTimeMillis();
+
             try {
                 //수신
                 while(percent < 100)
@@ -81,6 +122,8 @@ public class ExerciseActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             combo.setText(array[1]);
+                            //percentage.setProgress(Integer.parseInt(array[0]));
+                            //progressPer.setText(array[0]);
                         }
                     });
                     Thread.sleep(100);
@@ -107,6 +150,12 @@ public class ExerciseActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                end = System.currentTimeMillis();
+
+                exerciseTime = exerciseTime + ((( end - start )/1000) % 60);
+                Log.d("exerciseTime", Long.toString(exerciseTime));
+
+                userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
             }
             Log.d("connection_end",  response);
             return null;

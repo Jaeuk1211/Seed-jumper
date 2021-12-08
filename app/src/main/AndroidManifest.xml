@@ -31,6 +31,7 @@
         <activity android:name=".ExerciseActivity"/>
         <activity android:name=".recActivity"/>
         <activity android:name=".gardenActivity"/>
+        <activity android:name=".ExerciseSplash"/>
 
     </application>
 

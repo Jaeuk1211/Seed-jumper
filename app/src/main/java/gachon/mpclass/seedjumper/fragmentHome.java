@@ -56,8 +56,8 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
         normal_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(view.getContext(), ExerciseActivity.class);
+                Intent intent = new Intent(view.getContext(), ExerciseSplash.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 view.getContext().startActivity(intent);
 
             }
