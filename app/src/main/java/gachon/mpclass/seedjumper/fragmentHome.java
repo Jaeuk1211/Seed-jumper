@@ -61,8 +61,8 @@ public class fragmentHome extends Fragment {
             @Override
             public void onClick(View view) {
 
-                //Intent intent = new Intent(view.getContext(),ExerciseActivity.class);
-                //view.getContext().startActivity(intent);
+                Intent intent = new Intent(view.getContext(), recActivity.class);
+                view.getContext().startActivity(intent);
 
             }
         });
