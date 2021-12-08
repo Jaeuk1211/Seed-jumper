@@ -3,7 +3,6 @@ package gachon.mpclass.seedjumper;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,7 +36,6 @@ public class ExerciseActivity extends AppCompatActivity {
     long start;
     long end;
     long exerciseTime;
-    FrameLayout garden;
     FirebaseUser loginUser;
     String uid;
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
