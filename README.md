@@ -28,6 +28,11 @@ https://github.com/google/mediapipe/tree/master/mediapipe
 YouTube Video : Real-Time 3D Pose Detection & Pose Classification | Mediapipe | OpenCV | Python : 
 
 https://www.youtube.com/watch?v=aySurynUNAw&t=897s
+#
+
+We Used some icons from
+
+https://www.flaticon.com/
 
 #
 We used 'YouTube Audio' for the background music
