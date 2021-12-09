@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splash_background"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/splashTxt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:text="Your exercise"
+        android:fontFamily="@font/han"
+        android:textColor = "#15938D"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/splashTxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:text="will begin"
+        android:fontFamily="@font/han"
+        android:textColor = "#15938D"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/splashTxt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:text="In"
+        android:fontFamily="@font/han"
+        android:textColor = "#15938D"
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="110dp">
+
+
+        <TextView
+            android:id="@+id/splashTxt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="43dp"
+            android:text="443"
+            android:layout_marginRight="13dp"
+            android:textColor="#006258"
+            android:fontFamily="@font/opensans"/>
+
+        <TextView
+            android:id="@+id/splashTxt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="43dp"
+            android:text="seconds . . ."
+            android:textColor = "#15938D"
+            android:fontFamily="@font/han"/>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+
