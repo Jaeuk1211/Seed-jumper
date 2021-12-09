@@ -192,6 +192,8 @@ timeflag = 0
 #starttime = 0
 #endtime = -1
 #exercisetime = 0
+socketflag = 0
+goal = 0
 
 HOST = ""
 PORT = 7777
@@ -210,6 +212,25 @@ while camera_video.isOpened():
     data = conn.recv(1024)  # 안드로이드에서 "refresh" 전송
     result = data.decode("utf-8")
     print('rcv :', result, "len: ", len(data))  # 전송 받은값 디코딩
+
+    if socketflag == 0:
+        genre = 1 # 장르 저장할 변수
+        lv = 1 # 레벨 저장할 변수
+
+        if genre == 1:   
+            sounda = pygame.mixer.Sound('Python/music/'+ 'pop' + str(lv)+ '.mp3')
+        elif genre == 2:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'dance' + str(lv)+ '.mp3') 
+        elif genre == 3:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'country' + str(lv)+ '.mp3')
+        elif genre == 4:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'rock' + str(lv)+ '.mp3')
+        elif genre == 5:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'hiphop' + str(lv)+ '.mp3')
+
+        sounda.play()
+        goal = lv * 100
+        socketflag = 1
 
     # Read a frame.
     ok, frame = camera_video.read()
@@ -266,14 +287,14 @@ while camera_video.isOpened():
         break
     else:
         if percent!= 0 and percent%10 == 0 and soundflag == 0:
-            sound.load('Python/numaudio/'+ str(percent)+'.mp3')
-            sound.play()
+            soundb = pygame.mixer.Sound('Python/numaudio/'+ str(percent)+'.wav')
+            soundb.play()
             soundflag = 1
         else :
             if percent%10 != 0 :
                 soundflag = 0
 
-        cv2.putText(frame, '{}/100'.format(percent), (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 0), 2)
+        cv2.putText(frame, '{}/{}'.format(percent,goal), (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 0), 2)
         output = str(percent) + "#" + str(combo)
         conn.sendall(output.encode())
         #print("percent: ", percent)

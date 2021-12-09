@@ -17,9 +17,9 @@ pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.3, model_
 mp_drawing = mp.solutions.drawing_utils 
 
 # Initializing pygame module for audio feedback
-pygame.mixer.init()
-sound = pygame.mixer.music
-sound.set_volume(1.0)
+pygame.init() #turn all of pygame on.
+sound = pygame.mixer.Sound
+
 
 def detectPose(image, pose, display=True):
     '''
@@ -195,6 +195,9 @@ flag = 0
 t1 = 0
 t2 = 0
 soundflag = 0
+goal = 0
+level = 0
+socketflag = 0
 
 # Iterate until the webcam is accessed successfully.
 while camera_video.isOpened():
@@ -219,6 +222,25 @@ while camera_video.isOpened():
     
     # Perform Pose landmark detection.
     frame, landmarks = detectPose(frame, pose_video, display=False)
+
+    if socketflag == 0:
+        gen = 1 # 장르 저장할 변수
+        lv = 1 # 레벨 저장할 변수
+
+        if gen == 1:   
+            sounda = pygame.mixer.Sound('Python/music/'+ 'pop' + str(lv)+ '.mp3')
+        elif gen == 2:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'dance' + str(lv)+ '.mp3') 
+        elif gen == 3:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'country' + str(lv)+ '.mp3')
+        elif gen == 4:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'rock' + str(lv)+ '.mp3')
+        elif gen == 5:
+            sounda = pygame.mixer.Sound('Python/music/'+ 'hiphop' + str(lv)+ '.mp3')
+
+        sounda.play()
+        goal = lv * 100
+        socketflag = 1
     
     # Check if the landmarks are detected.
     if landmarks:
@@ -248,8 +270,8 @@ while camera_video.isOpened():
         cv2.putText(frame, 'Clear!!', (1000, 30),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
     else :
         if percent!= 0 and percent%10 == 0 and soundflag == 0:
-            sound.load('Python/numaudio/'+ str(percent)+'.mp3')
-            sound.play()
+            soundb = pygame.mixer.Sound('Python/numaudio/'+ str(percent)+'.wav')
+            soundb.play()
             soundflag = 1
         else :
             if percent%10 != 0 :
