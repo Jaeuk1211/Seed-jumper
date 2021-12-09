@@ -30,7 +30,7 @@ YouTube Video : Real-Time 3D Pose Detection & Pose Classification | Mediapipe | 
 https://www.youtube.com/watch?v=aySurynUNAw&t=897s
 #
 
-We Used some icons from
+We used some icons from
 
 https://www.flaticon.com/
 
