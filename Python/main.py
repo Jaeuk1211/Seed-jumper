@@ -189,9 +189,9 @@ flag = 0
 t1 = 0
 t2 = 0
 timeflag = 0
-starttime = 0
-endtime = -1
-exercisetime = 0
+#starttime = 0
+#endtime = -1
+#exercisetime = 0
 
 HOST = ""
 PORT = 7777
@@ -240,7 +240,7 @@ while camera_video.isOpened():
         # Set the start time
         if timeflag == 0 :
             timeflag = 1
-            starttime = time.time()
+            #starttime = time.time()
 
         if temp != 'Not jumping':
 
@@ -262,7 +262,7 @@ while camera_video.isOpened():
     # Display the frame.
     if percent >= 100:
         cv2.putText(frame, 'Clear!!', (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-        endtime = time.time()
+        #endtime = time.time()
         break
     else:
         if percent!= 0 and percent%10 == 0 and soundflag == 0:
@@ -298,8 +298,9 @@ while camera_video.isOpened():
         break
 
 # Release the VideoCapture object and close the windows.
+"""
 if endtime != -1 :
     exercisetime = int(endtime - starttime)
-
+"""
 camera_video.release()
 cv2.destroyAllWindows()
