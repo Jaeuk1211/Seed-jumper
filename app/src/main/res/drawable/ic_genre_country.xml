@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/classic"
+        android:drawable="@drawable/country"
         android:width="24dp"
         android:height="24dp"
-        android:id="@+id/classic" ></item>
+        android:id="@+id/country" ></item>
 
 </layer-list>

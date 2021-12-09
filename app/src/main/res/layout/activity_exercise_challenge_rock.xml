@@ -18,10 +18,10 @@
 
         <TextView
             android:id="@+id/grade"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Which Mood?"
+            android:text="Rock"
             android:textSize="50dp"
             android:fontFamily="@font/lobster_regular"
             android:textAlignment="center"
@@ -40,7 +40,7 @@
             tools:ignore="MissingConstraints" >
 
             <Button
-                android:id="@+id/pop"
+                android:id="@+id/lev1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
@@ -49,7 +49,7 @@
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"
-                android:text="느낌있는 팝"
+                android:text="Level 1"
                 android:textColor="@color/black"
                 android:textSize="40px" />
 
@@ -67,7 +67,7 @@
             tools:ignore="MissingConstraints" >
 
             <Button
-                android:id="@+id/dance"
+                android:id="@+id/lev2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
@@ -76,7 +76,7 @@
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"
-                android:text="신나는 댄스"
+                android:text="Level 2"
                 android:textColor="@color/black"
                 android:textSize="40px" />
 
@@ -94,74 +94,21 @@
             tools:ignore="MissingConstraints" >
 
             <Button
-                android:id="@+id/classic"
+                android:id="@+id/lev3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_classic"
+                android:drawableLeft="@drawable/ic_genre_country"
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"
-                android:text="차분한 클래식"
+                android:text="Level 3"
                 android:textColor="@color/black"
                 android:textSize="40px" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:duplicateParentState="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" >
-
-            <Button
-                android:id="@+id/rock"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_rock"
-                android:drawablePadding="18dip"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="18dip"
-                android:text="역동적인 락"
-                android:textColor="@color/black"
-                android:textSize="40px" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:duplicateParentState="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" >
-
-            <Button
-                android:id="@+id/hiphop"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_hiphop"
-                android:drawablePadding="18dip"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="18dip"
-                android:text="리드미컬한 힙합"
-                android:textColor="@color/black"
-                android:textSize="40px" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

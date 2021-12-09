@@ -63,7 +63,7 @@
         android:duplicateParentState="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -73,7 +73,7 @@
         <Button
             android:id="@+id/normal_exercise"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_margin="7dp"
             android:background="@drawable/mainbutton_state"
             android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
@@ -91,6 +91,35 @@
         android:duplicateParentState="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/challenge_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/mainbutton_state"
+            android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
+            android:drawablePadding="18dip"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="18dip"
+            android:text="챌린지 모드"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:duplicateParentState="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -100,7 +129,7 @@
         <Button
             android:id="@+id/recommend_exercise"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_margin="7dp"
             android:background="@drawable/mainbutton_state"
             android:drawableLeft="@drawable/ic_baseline_alarm_24"

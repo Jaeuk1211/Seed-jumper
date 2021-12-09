@@ -26,6 +26,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
 
     private TextView amount_calorie_consumption;
     private Button normal_btn;
+    private Button challenge_btn;
     private Button recommend_btn;
     private double calorie, planCalorie;
 
@@ -73,6 +74,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
 
         amount_calorie_consumption = view.findViewById(R.id.amount_calorie_consumption);
         normal_btn = (Button) view.findViewById(R.id.normal_exercise);
+        challenge_btn = (Button) view.findViewById(R.id.challenge_exercise);
         recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
         circleProgressBar = view.findViewById(R.id.cpb_circlebar);
 
@@ -88,13 +90,23 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             }
         });
 
+        challenge_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), challengeActivity.class);
+                view.getContext().startActivity(intent);
+
+            }
+        });
+
         //운동 추천 모드
         recommend_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(exerciseTime > 0)
                 {
-                    Intent intent = new Intent(view.getContext(), recActivity.class);
+                    Intent intent = new Intent(view.getContext(), challengeActivity.class);
                     view.getContext().startActivity(intent);
                 }
                 else{
