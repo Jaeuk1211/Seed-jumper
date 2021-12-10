@@ -29,6 +29,7 @@
         </activity>
         <activity android:name=".FindActivity" />
         <activity android:name=".ExerciseActivity"/>
+        <activity android:name=".ProgressExerciseActivity"/>
         <activity android:name=".challengeActivity"/>
         <activity android:name=".challengePopActivity"/>
         <activity android:name=".challengeDanceActivity"/>
@@ -37,6 +38,7 @@
         <activity android:name=".challengeHiphopActivity"/>
         <activity android:name=".gardenActivity"/>
         <activity android:name=".ExerciseSplash"/>
+        <activity android:name=".challangeSplash"/>
 
     </application>
 

@@ -9,137 +9,149 @@
     android:layout_height="match_parent"
     android:background="@drawable/main_background_re"
     android:orientation="vertical">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFFFFF"
-        android:paddingLeft="20dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="10dp"
-        android:text="칼로리 소모량"
-        android:textAlignment="textStart"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        tools:ignore="RtlCompat" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:backgroundTint="#FFFFFF"
+               android:paddingLeft="20dp"
+               android:paddingTop="30dp"
+               android:paddingBottom="10dp"
+               android:text="칼로리 소모량"
+               android:textAlignment="textStart"
+               android:textColor="#000000"
+               android:textSize="20dp"
+               tools:ignore="RtlCompat" />
 
-    <TextView
-        android:id="@+id/amount_calorie_consumption"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:paddingBottom="10dp"
-        android:text="0kcal"
-        android:textColor="#000000"
-        android:textSize="33dp"
-        android:textStyle="bold"
+           <TextView
+               android:id="@+id/amount_calorie_consumption"
+               android:layout_width="wrap_content"
+               android:layout_height="55dp"
+               android:layout_marginStart="20dp"
+               android:layout_marginLeft="20dp"
+               android:paddingBottom="10dp"
+               android:text="0kcal"
+               android:textColor="#000000"
+               android:textSize="33dp"
+               android:textStyle="bold"
 
-        />
+               />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
 
-        <com.dinuscxj.progressbar.CircleProgressBar
-            android:id="@+id/cpb_circlebar"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:progress_text_size="50sp"
-            app:style="solid_line"
-            app:progress_stroke_width="20dp "
-            app:progress_stroke_cap="round"
-            app:progress_start_color="#FFBB00"
-            app:progress_end_color="#ABF200"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+               <com.dinuscxj.progressbar.CircleProgressBar
+                   android:id="@+id/cpb_circlebar"
+                   android:layout_width="300dp"
+                   android:layout_height="300dp"
+                   app:progress_text_size="50sp"
+                   app:style="solid_line"
+                   app:progress_stroke_width="20dp "
+                   app:progress_stroke_cap="round"
+                   app:progress_start_color="#FFBB00"
+                   app:progress_end_color="#ABF200"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+           </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:duplicateParentState="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+           <LinearLayout
+               android:duplicateParentState="true"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="1.0"
+               app:layout_constraintStart_toStartOf="parent"
+               tools:ignore="MissingConstraints">
 
-        <Button
-            android:id="@+id/normal_exercise"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:background="@drawable/mainbutton_state"
-            android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
-            android:drawablePadding="18dip"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="18dip"
-            android:text="일반 운동 모드"
-            android:textColor="@color/black"
-            android:textSize="40px" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:duplicateParentState="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:id="@+id/challenge_exercise"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:background="@drawable/mainbutton_state"
-            android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
-            android:drawablePadding="18dip"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="18dip"
-            android:text="챌린지 모드"
-            android:textColor="@color/black"
-            android:textSize="40px" />
+               <Button
+                   android:id="@+id/normal_exercise"
+                   android:layout_width="match_parent"
+                   android:layout_height="70dp"
+                   android:layout_margin="7dp"
+                   android:background="@drawable/mainbutton_state"
+                   android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
+                   android:drawablePadding="18dip"
+                   android:gravity="left|center_vertical"
+                   android:paddingLeft="18dip"
+                   android:text="일반 운동 모드"
+                   android:textColor="@color/black"
+                   android:textSize="40px" />
 
 
-    </LinearLayout>
+           </LinearLayout>
 
-    <LinearLayout
-        android:duplicateParentState="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+           <LinearLayout
+               android:duplicateParentState="true"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="1.0"
+               app:layout_constraintStart_toStartOf="parent"
+               tools:ignore="MissingConstraints">
 
-        <Button
-            android:id="@+id/recommend_exercise"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:background="@drawable/mainbutton_state"
-            android:drawableLeft="@drawable/ic_baseline_alarm_24"
-            android:drawablePadding="18dip"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="18dip"
-            android:text="코스 추천 모드"
-            android:textColor="@color/black"
-            android:textSize="40px" />
+               <Button
+                   android:id="@+id/challenge_exercise"
+                   android:layout_width="match_parent"
+                   android:layout_height="70dp"
+                   android:layout_margin="7dp"
+                   android:background="@drawable/mainbutton_state"
+                   android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
+                   android:drawablePadding="18dip"
+                   android:gravity="left|center_vertical"
+                   android:paddingLeft="18dip"
+                   android:text="챌린지 모드"
+                   android:textColor="@color/black"
+                   android:textSize="40px" />
 
-    </LinearLayout>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:duplicateParentState="true"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="1.0"
+               app:layout_constraintStart_toStartOf="parent"
+               tools:ignore="MissingConstraints">
+
+               <Button
+                   android:id="@+id/recommend_exercise"
+                   android:layout_width="match_parent"
+                   android:layout_height="70dp"
+                   android:layout_margin="7dp"
+                   android:background="@drawable/mainbutton_state"
+                   android:drawableLeft="@drawable/ic_baseline_alarm_24"
+                   android:drawablePadding="18dip"
+                   android:gravity="left|center_vertical"
+                   android:paddingLeft="18dip"
+                   android:text="코스 추천 모드"
+                   android:textColor="@color/black"
+                   android:textSize="40px" />
+
+           </LinearLayout>
+
+       </LinearLayout>
+   </ScrollView>
+
+
 
 </LinearLayout>

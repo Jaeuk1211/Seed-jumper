@@ -40,6 +40,8 @@ public class ExerciseActivity extends AppCompatActivity {
     String uid;
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = userDatabase.getReference();
+    int level = 0;
+    int genre = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,13 @@ public class ExerciseActivity extends AppCompatActivity {
         loginUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = loginUser != null ? loginUser.getUid() : null;
 
-        DatabaseReference time = userReference.child("users").child(uid).child("record").child("total").child("time");
+        DatabaseReference time = userReference.child("users").child(uid).child("record").child("total");
         time.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
+                    long a = ds.getValue(Long.class);
+                    long b = ds.getValue(Long.class);
                     exerciseTime = ds.getValue(Long.class);//아이템 획득 기능이 추가되면 거기 맞추어 타입 바꾸기
                 }
             }
@@ -67,7 +71,7 @@ public class ExerciseActivity extends AppCompatActivity {
         combo = findViewById(R.id.combo);
         //percentage = findViewById(R.id.exercise_progress);
         //progressPer = findViewById(R.id.percent);
-        message = "ok";
+        message = Integer.toString(level) + Integer.toString(genre);
 
         MyClientTask myClientTask = new MyClientTask("172.30.1.15", 7777, message);
         myClientTask.execute();

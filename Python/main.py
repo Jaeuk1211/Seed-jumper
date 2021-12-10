@@ -214,19 +214,19 @@ while camera_video.isOpened():
     print('rcv :', result, "len: ", len(data))  # 전송 받은값 디코딩
 
     if socketflag == 0:
-        genre = 1 # 장르 저장할 변수
-        lv = 1 # 레벨 저장할 변수
+        lv = int(result[:1]) # 장르 저장할 변수
+        genre = int(result[-1:]) # 레벨 저장할 변수
 
         if genre == 1:   
-            sounda = pygame.mixer.Sound('Python/music/'+ 'pop' + str(lv)+ '.mp3')
+            sounda = pygame.mixer.Sound('C:/Users/LG/PycharmProjects/pythonProject/music/'+ 'pop' + str(lv)+ '.mp3')
         elif genre == 2:
-            sounda = pygame.mixer.Sound('Python/music/'+ 'dance' + str(lv)+ '.mp3') 
+            sounda = pygame.mixer.Sound('C:/Users/LG/PycharmProjects/pythonProject/music/'+ 'dance' + str(lv)+ '.mp3')
         elif genre == 3:
-            sounda = pygame.mixer.Sound('Python/music/'+ 'country' + str(lv)+ '.mp3')
+            sounda = pygame.mixer.Sound('C:/Users/LG/PycharmProjects/pythonProject/music/'+ 'country' + str(lv)+ '.mp3')
         elif genre == 4:
-            sounda = pygame.mixer.Sound('Python/music/'+ 'rock' + str(lv)+ '.mp3')
+            sounda = pygame.mixer.Sound('C:/Users/LG/PycharmProjects/pythonProject/music/'+ 'rock' + str(lv)+ '.mp3')
         elif genre == 5:
-            sounda = pygame.mixer.Sound('Python/music/'+ 'hiphop' + str(lv)+ '.mp3')
+            sounda = pygame.mixer.Sound('C:/Users/LG/PycharmProjects/pythonProject/music/'+ 'hiphop' + str(lv)+ '.mp3')
 
         sounda.play()
         goal = lv * 100

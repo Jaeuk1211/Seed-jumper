@@ -50,11 +50,13 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
         loginUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = loginUser != null ? loginUser.getUid() : null;
 
-        DatabaseReference time = userReference.child("users").child(uid).child("record").child("total").child("time");
+        DatabaseReference time = userReference.child("users").child(uid).child("record").child("total");
         time.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
+                    long a = ds.getValue(Long.class);
+                    long b = ds.getValue(Long.class);
                     exerciseTime = ds.getValue(Long.class);//아이템 획득 기능이 추가되면 거기 맞추어 타입 바꾸기
                 }
             }
@@ -64,6 +66,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
 
             }
         });
+
 
     }
     @Override
@@ -94,8 +97,14 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), challengeActivity.class);
-                view.getContext().startActivity(intent);
+                if(exerciseTime > 0)
+                {
+                    Intent intent = new Intent(view.getContext(), challengeActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getContext(),"아직 기록된 운동이 없습니다. endless와 challange 모드를 통해 기록을 남기고 운동을 추천받아보세요!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
