@@ -175,7 +175,7 @@
                             android:layout_height="100dp"
                             android:inputType="textMultiLine"
                             android:ems="10"
-                            android:id="@+id/contextEditText"
+                            android:id="@+id/contentEditText"
                             app:layout_constraintTop_toBottomOf="@+id/planCalorieTextView" android:layout_marginTop="16dp"
                             android:hint="내용을 입력하세요." android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginRight="8dp" android:layout_marginStart="8dp"
@@ -185,11 +185,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:id="@+id/contextTextView"
-                            app:layout_constraintTop_toTopOf="@+id/contextEditText"
-                            app:layout_constraintBottom_toBottomOf="@+id/contextEditText" app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/contentTextView"
+                            app:layout_constraintTop_toTopOf="@+id/contentEditText"
+                            app:layout_constraintBottom_toBottomOf="@+id/contentEditText" app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-                            app:layout_constraintStart_toStartOf="@+id/contextEditText" android:layout_marginLeft="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/contentEditText" android:layout_marginLeft="8dp"
                             android:layout_marginStart="8dp" android:visibility="invisible"/>
 
                         <Button
@@ -198,7 +198,7 @@
                             android:layout_marginBottom="20dp"
                             android:layout_height="wrap_content"
                             android:id="@+id/save_Btn" android:layout_marginTop="16dp"
-                            app:layout_constraintTop_toBottomOf="@+id/contextEditText" app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/contentEditText" app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
                             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
                             android:layout_marginStart="8dp" android:visibility="invisible"/>

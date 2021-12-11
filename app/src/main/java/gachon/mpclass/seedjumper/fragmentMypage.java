@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -25,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
-public class fragmentMypage extends Fragment{
+public class fragmentMypage extends Fragment {
 
     View targetView;
     Button drawerButton;
@@ -38,6 +40,12 @@ public class fragmentMypage extends Fragment{
     private TextView totalTime;
     private TextView totalCount;
     private TextView totalCalorie;
+
+    //스케줄러
+    public CalendarView calendarView;
+    public Button cha_Btn, del_Btn, save_Btn;
+    public TextView dateTextView, planCalorieTextView, contentTextView;
+    public EditText contentEditText, planCalorieEditText;
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -63,10 +71,20 @@ public class fragmentMypage extends Fragment{
         totalCount = view.findViewById(R.id.totalCount);
         totalCalorie = view.findViewById(R.id.totalCalorie);
 
+        calendarView = view.findViewById(R.id.calendarView);
+        dateTextView = view.findViewById(R.id.dateTextView);
+        planCalorieTextView = view.findViewById(R.id.planCalorieTextView);
+        contentTextView = view.findViewById(R.id.contentTextView);
+        save_Btn = view.findViewById(R.id.save_Btn);
+        del_Btn = view.findViewById(R.id.del_Btn);
+        cha_Btn = view.findViewById(R.id.cha_Btn);
+        planCalorieEditText = view.findViewById(R.id.planCalorieEditText);
+        contentEditText = view.findViewById(R.id.contentEditText);
+
         Random random = new Random();
         quoteNum = random.nextInt(5);
 
-        switch (quoteNum){
+        switch (quoteNum) {
             case 0:
                 quoteText.setText("Reading for mind \nnexercise for body");
                 break;
@@ -84,15 +102,14 @@ public class fragmentMypage extends Fragment{
                 break;
         }
 
-        class DrawButtonClickListener implements View.OnClickListener{
+        class DrawButtonClickListener implements View.OnClickListener {
             @Override
-            public void onClick(View v){
-                if(drawerToggle == false){
+            public void onClick(View v) {
+                if (drawerToggle == false) {
                     ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(targetView, "translationY", -1700);
                     objectAnimator.setDuration(500); //0.5초에 걸쳐 진행.
                     objectAnimator.start();
-                }
-                else{
+                } else {
                     ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(targetView, "translationY", 0);
                     objectAnimator.setDuration(500); //0.5초에 걸쳐 진행.
                     objectAnimator.start();
@@ -143,7 +160,41 @@ public class fragmentMypage extends Fragment{
             }
         });
 
+        //스케줄러부분
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                dateTextView.setVisibility(View.VISIBLE);
+                save_Btn.setVisibility(View.VISIBLE);
+                contentEditText.setVisibility(View.VISIBLE);
+                contentTextView.setVisibility(View.INVISIBLE);
+                planCalorieTextView.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.INVISIBLE);
+                del_Btn.setVisibility(View.INVISIBLE);
+                dateTextView.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
+                contentEditText.setText("");
+                planCalorieEditText.setText("");
+                //checkDay(year, month, dayOfMonth, uid);
+            }
+        });
+
+        save_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //saveDiary(fname);
+                //str = contextEditText.getText().toString();
+               // contentTextView.setText(str);
+                save_Btn.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.VISIBLE);
+                del_Btn.setVisibility(View.VISIBLE);
+                contentEditText.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.VISIBLE);
+
+            }
+        });
+
 
         return view;
     }
+
 }
