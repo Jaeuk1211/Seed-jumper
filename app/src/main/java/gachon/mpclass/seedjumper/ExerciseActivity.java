@@ -1,5 +1,6 @@
 package gachon.mpclass.seedjumper;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +43,8 @@ public class ExerciseActivity extends AppCompatActivity {
     private DatabaseReference userReference = userDatabase.getReference();
     int level = 0;
     int genre = 0;
+    String[] clearStage;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +102,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
             try {
                 //수신
-                while(percent < 100)
+                while(percent > -1)
                 {
                     socket = new Socket(dstAddress, dstPort);
                     //송신
@@ -159,6 +162,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
                 userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
                 updateAvg((( end - start )/1000) % 60);
+
+                goItemPage();
             }
             Log.d("connection_end",  response);
             return null;
@@ -186,5 +191,17 @@ public class ExerciseActivity extends AppCompatActivity {
                 Log.e("ExerciseActivity", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+    }
+
+    public void goItemPage(){
+
+        if(exerciseTime > 3600)//시간 수정
+        {
+            Intent intent = new Intent(getApplicationContext(), getNewItem.class);
+            intent.putExtra("totalTime", Long.toString(exerciseTime));
+            intent.putExtra("genre", genre);
+            startActivity(intent);
+            finish();
+        }
     }
 }

@@ -39,6 +39,7 @@
         <activity android:name=".gardenActivity"/>
         <activity android:name=".ExerciseSplash"/>
         <activity android:name=".challangeSplash"/>
+        <activity android:name=".getNewItem"/>
 
     </application>
 

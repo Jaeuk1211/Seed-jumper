@@ -44,6 +44,8 @@ public class ProgressExerciseActivity extends AppCompatActivity {
     private DatabaseReference userReference = userDatabase.getReference();
     int level = 0;
     int genre = 0;
+    String[] clearStage;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,22 @@ public class ProgressExerciseActivity extends AppCompatActivity {
                     long a = ds.getValue(Long.class);
                     long b = ds.getValue(Long.class);
                     exerciseTime = ds.getValue(Long.class);//아이템 획득 기능이 추가되면 거기 맞추어 타입 바꾸기
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference item = userReference.child("users").child(uid).child("clearStage");
+        item.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    clearStage[i] = ds.getValue(String.class);
+                    i++;
                 }
             }
 
@@ -165,6 +183,7 @@ public class ProgressExerciseActivity extends AppCompatActivity {
                 Log.d("exerciseTime", Long.toString(exerciseTime));
 
                 userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
+                goItemPage();
             }
             Log.d("connection_end",  response);
             return null;
@@ -173,6 +192,29 @@ public class ProgressExerciseActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+        }
+    }
+
+    public void goItemPage(){
+        boolean find = false;
+        Log.d("level2", Integer.toString(genre));
+        int k;
+        for(k = 0; k < i; k ++)
+        {
+            if(clearStage[k].equalsIgnoreCase(message)){
+                find = true;
+                break;
+            }
+        }
+
+        if(find == false)
+        {
+            userReference.child("users").child(uid).child("record").child("clearStage").child("stageCode").setValue(message);
+            Intent intent = new Intent(getApplicationContext(), getNewItem.class);
+            intent.putExtra("level", level);
+            intent.putExtra("genre", genre);
+            startActivity(intent);
+            finish();
         }
     }
 }
