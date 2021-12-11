@@ -35,6 +35,9 @@ public class fragmentMypage extends Fragment{
     TextView quoteText;
 
     private TextView userName;
+    private TextView totalTime;
+    private TextView totalCount;
+    private TextView totalCalorie;
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -56,6 +59,9 @@ public class fragmentMypage extends Fragment{
         drawerButton = view.findViewById(R.id.drawer);
         quoteText = view.findViewById(R.id.quote);
         userName = view.findViewById(R.id.user_name);
+        totalTime = view.findViewById(R.id.totalTime);
+        totalCount = view.findViewById(R.id.totalCount);
+        totalCalorie = view.findViewById(R.id.totalCalorie);
 
         Random random = new Random();
         quoteNum = random.nextInt(5);
@@ -104,26 +110,15 @@ public class fragmentMypage extends Fragment{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.getValue(String.class);
                 userName.setText(name + "님 반갑습니다");
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragmentHome", String.valueOf(databaseError.toException())); // 에러문 출력
+                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
 
 
-
-
-//        goToGarden.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view)
-//            {
-//                Intent intent = new Intent(getActivity(), fragmentGarden.class);
-//                startActivity(intent);
-//            }
-//        });
         return view;
     }
 }
