@@ -26,16 +26,11 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
-    private static final String USERS_KEY = "users";
-    private static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
-    private static final String EMAIL_KEY = "email";
-    private static final String PASSWORD_KEY = "password";
-    private static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
 
     private Button buttonSignup;
     private ImageView buttonBack;
@@ -50,6 +45,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
+
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    long mNow;
 
 
     ProgressDialog progressDialog;
@@ -170,11 +169,20 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public void setInitialRecord() {
         String uid = mAuth.getCurrentUser().getUid();
         Record record = new Record(0, 0);
+        String time = getTime();
         databaseReference.child("users").child(uid).child("record").child("total").setValue(record);
         databaseReference.child("users").child(uid).child("record").child("average").setValue(record);
-        databaseReference.child("users").child(uid).child("record").child("daily").setValue(record);
+        databaseReference.child("users").child(uid).child("record").child("daily").child(time).setValue(record);
 
     }
+
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
+
 
     /* *******Register Button ******** */
     @Override

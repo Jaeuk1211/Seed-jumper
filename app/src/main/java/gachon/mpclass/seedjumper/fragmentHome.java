@@ -22,13 +22,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class fragmentHome extends Fragment implements CircleProgressBar.ProgressFormatter{
 
     private TextView amount_calorie_consumption;
     private Button normal_btn;
     private Button challenge_btn;
     private Button recommend_btn;
-    private double calorie, planCalorie;
+    private double calorie;
+    private int planCalorie;
 
     CircleProgressBar circleProgressBar;
     private int progress;
@@ -40,6 +44,11 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
     FirebaseUser loginUser;
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = userDatabase.getReference();
+
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    long mNow;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +89,9 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
         challenge_btn = (Button) view.findViewById(R.id.challenge_exercise);
         recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
         circleProgressBar = view.findViewById(R.id.cpb_circlebar);
+
+        String time = getTime();
+
 
         //일반 운동 모드(Endless mode)
         normal_btn.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +139,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
 
         //사용자의 하루 운동 소모량
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
-        databaseReference.child("record").child("daily").child("calorie").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("record").child("daily").child(time).child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 calorie = (double) dataSnapshot.getValue(Double.class);
@@ -154,5 +166,11 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
     @Override
     public CharSequence format(int progress, int max) {
         return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
+    }
+
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
     }
 }
