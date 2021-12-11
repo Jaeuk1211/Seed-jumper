@@ -158,7 +158,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 Log.d("exerciseTime", Long.toString(exerciseTime));
 
                 userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
-                updateAvg(exerciseTime);
+                updateAvg((( end - start )/1000) % 60);
             }
             Log.d("connection_end",  response);
             return null;
@@ -171,13 +171,13 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     //평균 값을 업데이트 해주는 함수
-    public void updateAvg(long exerciseTime)
+    public void updateAvg(long unitExerciseTime)
     {
         userReference.child("users").child(uid).child("record").child("average").child("time").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 long time = (long) dataSnapshot.getValue(Long.class);//저장된 값을 숫자로 받아오고
-                time = (time + exerciseTime)/2; //평균값 구해서
+                time = (time + unitExerciseTime) / 2; //평균값 구해서
                 userReference.child("users").child(uid).child("record").child("average").child("time").setValue(time);//저장
             }
 
