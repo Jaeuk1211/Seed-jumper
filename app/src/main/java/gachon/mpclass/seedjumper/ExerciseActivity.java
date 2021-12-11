@@ -158,6 +158,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 Log.d("exerciseTime", Long.toString(exerciseTime));
 
                 userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
+                updateAvg(exerciseTime);
             }
             Log.d("connection_end",  response);
             return null;
@@ -167,5 +168,23 @@ public class ExerciseActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
         }
+    }
+
+    //평균 값을 업데이트 해주는 함수
+    public void updateAvg(long exerciseTime)
+    {
+        userReference.child("users").child(uid).child("record").child("average").child("time").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                long time = (long) dataSnapshot.getValue(Long.class);//저장된 값을 숫자로 받아오고
+                time = (time + exerciseTime)/2; //평균값 구해서
+                userReference.child("users").child(uid).child("record").child("average").child("time").setValue(time);//저장
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("ExerciseActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
     }
 }
