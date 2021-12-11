@@ -118,6 +118,31 @@ public class fragmentMypage extends Fragment{
             }
         });
 
+        //누적 운동시간, 칼로리 소모량, 줄넘기 횟수
+        user.child("record").child("total").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Record record = dataSnapshot.getValue(Record.class);
+
+                double calorie;
+                int count, time;
+
+                calorie = record.getCalorie();
+                count = record.getCount();
+                time = record.getTime() / 60;
+
+                //텍스트뷰에 받아온 문자열 대입하기
+                totalCalorie.setText(calorie + "kcal");
+                totalCount.setText(count + "회");
+                totalTime.setText(time + "분");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
 
         return view;
     }
