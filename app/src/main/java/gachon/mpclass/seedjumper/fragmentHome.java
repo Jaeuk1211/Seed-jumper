@@ -109,14 +109,8 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             @Override
             public void onClick(View view) {
 
-                if(exerciseTime > 0)
-                {
-                    Intent intent = new Intent(view.getContext(), challengeActivity.class);
-                    view.getContext().startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getContext(),"아직 기록된 운동이 없습니다. endless와 challange 모드를 통해 기록을 남기고 운동을 추천받아보세요!", Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(view.getContext(), challengeActivity.class);
+                view.getContext().startActivity(intent);
 
             }
         });

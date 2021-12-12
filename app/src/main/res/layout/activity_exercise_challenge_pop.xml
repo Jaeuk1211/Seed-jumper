@@ -45,7 +45,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_pop"
+                android:drawableLeft="@drawable/ic_seed_1"
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"
@@ -67,12 +67,12 @@
             tools:ignore="MissingConstraints" >
 
             <Button
-                android:id="@+id/dance"
+                android:id="@+id/lev2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_dance"
+                android:drawableLeft="@drawable/ic_flower_1"
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"
@@ -94,12 +94,12 @@
             tools:ignore="MissingConstraints" >
 
             <Button
-                android:id="@+id/classic"
+                android:id="@+id/lev3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/mainbutton_state"
-                android:drawableLeft="@drawable/ic_genre_country"
+                android:drawableLeft="@drawable/ic_bundle_1"
                 android:drawablePadding="18dip"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="18dip"

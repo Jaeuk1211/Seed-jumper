@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class challengePopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_challenge_country);
+        setContentView(R.layout.activity_exercise_challenge_pop);
 
         Button btn1 = (Button) findViewById(R.id.lev1);
         Button btn2 = (Button) findViewById(R.id.lev2);
