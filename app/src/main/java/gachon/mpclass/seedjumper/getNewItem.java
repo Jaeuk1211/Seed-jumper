@@ -2,6 +2,7 @@ package gachon.mpclass.seedjumper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,10 +35,10 @@ public class getNewItem extends AppCompatActivity {
         loginUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = loginUser != null ? loginUser.getUid() : null;
 
-        Intent itmeIntent = getIntent();
-        level = itmeIntent.getIntExtra("level", 0);
-        genre = itmeIntent.getIntExtra("genre", 0);
-        totalTime = itmeIntent.getIntExtra("totalTime", 0);
+        Intent itemIntent = getIntent();
+        level = itemIntent.getIntExtra("level", 0);
+        genre = itemIntent.getIntExtra("genre", 0);
+        totalTime = itemIntent.getIntExtra("totalTime", 0);
 
 
         switch (genre){
@@ -152,5 +153,30 @@ public class getNewItem extends AppCompatActivity {
                 break;
         }//switch
 
+
+    }
+
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                //손가락으로 화면을 누르기 시작했을 때 할 일
+                break;
+            case MotionEvent.ACTION_MOVE:
+                //터치 후 손가락을 움직일 때 할 일
+                break;
+            case MotionEvent.ACTION_UP:
+                Intent intent = new Intent(getApplicationContext(), clearStage.class);
+                intent.putExtra("level", level);
+                intent.putExtra("genre", genre);
+                startActivity(intent);
+                finish();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                // 터치가 취소될 때 할 일
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

@@ -121,7 +121,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             public void onClick(View view) {
                 if(exerciseTime > 0)
                 {
-                    Intent intent = new Intent(view.getContext(), challengeActivity.class);
+                    Intent intent = new Intent(view.getContext(), recommendActivity.class);
                     view.getContext().startActivity(intent);
                 }
                 else{

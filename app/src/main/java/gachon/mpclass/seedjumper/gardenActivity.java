@@ -1,20 +1,16 @@
 package gachon.mpclass.seedjumper;
 //운동페이지 완성으로 파이어베이스에 뱃지 추가 기능 만들고나서 여기 파이어베이스 만들기
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +26,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class  gardenActivity extends AppCompatActivity {
@@ -51,7 +44,6 @@ public class  gardenActivity extends AppCompatActivity {
     FirebaseUser loginUser;
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = userDatabase.getReference();
-    private ArrayList<Garden> userInfo = new ArrayList<Garden>();
     String flowers;
     int k =0;
 

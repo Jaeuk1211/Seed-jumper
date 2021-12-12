@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/recommend_background">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp">
+        <TextView
+            android:id="@+id/userId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AAA "
+            android:textSize="38dp"
+            android:fontFamily="@font/lobster_regular"
+            android:textColor="#66CEAC"
+            android:layout_marginLeft="45dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="님의"
+            android:textSize="25dp"
+            android:fontFamily="@font/lobster_regular"
+            android:textColor="#66CEAC"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추천 운동 프로그램 입니다."
+            android:textSize="25dp"
+            android:fontFamily="@font/nanumsquareroundr"
+            android:textColor="#66CEAC"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop= "220dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity = "center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/genreName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="즐거운 주말"
+            android:textSize="30dp"
+            android:fontFamily="@font/han"
+            android:textColor="#005A58"
+            android:layout_marginBottom="10dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LV. "
+                android:textSize="30dp"
+                android:fontFamily="@font/han"
+                android:textColor="#005A58" />
+            <TextView
+                android:id="@+id/levelInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="443"
+                android:textSize="30dp"
+                android:fontFamily="@font/han"
+                android:textColor="#005A58" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity = "center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="화면을 눌러 운동을 시작해 보세요."
+        android:textSize="20dp"
+        android:fontFamily="@font/nanumsquareroundr"
+        android:textColor="#66CEAC"
+        android:layout_marginTop="170dp"/>
+
+</LinearLayout>
