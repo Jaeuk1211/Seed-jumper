@@ -49,13 +49,10 @@ public class fragmentMypage extends Fragment {
     public Button cha_Btn, del_Btn, save_Btn;
     public TextView dateTextView, planCalorieTextView, contentTextView;
     public EditText contentEditText, planCalorieEditText;
-    private String str;
-    private int num;
+    private String str = null;
+    private int num = 0;
+    public String fdate=null;
 
-    Date mDate;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
-    long mNow;
-    String time;
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -93,7 +90,6 @@ public class fragmentMypage extends Fragment {
         planCalorieEditText = view.findViewById(R.id.planCalorieEditText);
         contentEditText = view.findViewById(R.id.contentEditText);
 
-        time = getTime();
 
         Random random = new Random();
         quoteNum = random.nextInt(5);
@@ -184,22 +180,23 @@ public class fragmentMypage extends Fragment {
                 planCalorieTextView.setVisibility(View.INVISIBLE);
                 cha_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
-                dateTextView.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
+                dateTextView.setText(String.format("%d-%d-%d", year, month + 1, dayOfMonth));
                 contentEditText.setText("");
                 planCalorieEditText.setText("");
-                checkDay(year, month, dayOfMonth, uid);
+                checkDay(year, month, dayOfMonth);
             }
         });
 
         save_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                saveMemo(time);
                 str = contentEditText.getText().toString().trim();
                 contentTextView.setText(str);
                 num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
                 planCalorieTextView.setText(num);
+
+                saveMemo(fdate,num,str);
+
                 save_Btn.setVisibility(View.INVISIBLE);
                 cha_Btn.setVisibility(View.VISIBLE);
                 del_Btn.setVisibility(View.VISIBLE);
@@ -211,13 +208,25 @@ public class fragmentMypage extends Fragment {
             }
         });
 
-
         return view;
     }
 
-    public void  checkDay(int cYear,int cMonth,int cDay,String uid){
-        //수정필요
-        //str=new String(fileData);
+    public void  checkDay(int cYear,int cMonth,int cDay){
+
+        fdate = cYear+"-"+(cMonth+1)+"-"+cDay;
+        user.child("record").child("daily").child(fdate).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Memo memo = dataSnapshot.getValue(Memo.class);
+                num = memo.getPlanCalorie();
+                str = memo.getContent();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
 
         planCalorieEditText.setVisibility(View.INVISIBLE);
         contentEditText.setVisibility(View.INVISIBLE);
@@ -243,8 +252,13 @@ public class fragmentMypage extends Fragment {
                 save_Btn.setVisibility(View.VISIBLE);
                 cha_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
-                contentTextView.setText(contentEditText.getText());
-                planCalorieTextView.setText(planCalorieEditText.getText());
+
+                str = contentEditText.getText().toString().trim();
+                num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
+                contentTextView.setText(str);
+                planCalorieTextView.setText(num);
+
+
             }
 
         });
@@ -260,7 +274,7 @@ public class fragmentMypage extends Fragment {
                 save_Btn.setVisibility(View.VISIBLE);
                 cha_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
-                removeMemo(time);
+                removeMemo(fdate);
             }
         });
         if(contentTextView.getText()==null && planCalorieTextView.getText()==null){
@@ -277,22 +291,15 @@ public class fragmentMypage extends Fragment {
 
     @SuppressLint("WrongConstant")
     public void removeMemo(String readDay){
-
-        user.child("record").child("daily").child(readDay).child("planCalorie").setValue("0");
-        user.child("record").child("daily").child(readDay).child("content").setValue("");
-
-
+        Memo memo = new Memo(0, null);
+        user.child("record").child("daily").child(readDay).setValue(memo);
     }
-    //수정필요
+
     @SuppressLint("WrongConstant")
-    public void saveMemo(String readDay){
-            String content=contentEditText.getText().toString();
+    public void saveMemo(String readDay, int calorie, String content){
+        Memo memo = new Memo(calorie, content);
+        user.child("record").child("daily").child(readDay).setValue(memo);
     }
 
-    private String getTime(){
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-        return mFormat.format(mDate);
-    }
 
 }
