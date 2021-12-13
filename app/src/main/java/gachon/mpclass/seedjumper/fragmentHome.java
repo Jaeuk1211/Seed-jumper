@@ -28,6 +28,7 @@ import java.util.Date;
 public class fragmentHome extends Fragment implements CircleProgressBar.ProgressFormatter{
 
     private TextView amount_calorie_consumption;
+    private TextView nameView;
     private Button normal_btn;
     private Button challenge_btn;
     private Button recommend_btn;
@@ -89,6 +90,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
         challenge_btn = (Button) view.findViewById(R.id.challenge_exercise);
         recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
         circleProgressBar = view.findViewById(R.id.cpb_circlebar);
+        nameView = view.findViewById(R.id.nameView);
 
         String time = getTime();
 
@@ -131,8 +133,24 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             }
         });
 
-        //사용자의 하루 운동 소모량
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+        //사용자의 이름 불러오기
+        databaseReference.child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                 String name = dataSnapshot.getValue(String.class);
+                 nameView.setText(name + "님의 칼로리 소모량");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+        //사용자의 하루 운동 소모량
         databaseReference.child("record").child("total").child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -153,6 +171,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
                 Log.e("fragmentHome", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+
 
         // Inflate the layout for this fragment
         return view;
