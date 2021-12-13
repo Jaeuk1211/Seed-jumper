@@ -46,7 +46,7 @@ public class fragmentMypage extends Fragment {
 
     //스케줄러
     public CalendarView calendarView;
-    public Button cha_Btn, del_Btn, save_Btn;
+    public Button cha_Btn, del_Btn, save_Btn, logout_Btn;
     public TextView dateTextView, planCalorieTextView, contentTextView;
     public EditText contentEditText, planCalorieEditText;
     private String str = null;
@@ -87,6 +87,7 @@ public class fragmentMypage extends Fragment {
         save_Btn = view.findViewById(R.id.save_Btn);
         del_Btn = view.findViewById(R.id.del_Btn);
         cha_Btn = view.findViewById(R.id.cha_Btn);
+        logout_Btn = view.findViewById(R.id.logout_Btn);
         planCalorieEditText = view.findViewById(R.id.planCalorieEditText);
         contentEditText = view.findViewById(R.id.contentEditText);
 
@@ -205,6 +206,16 @@ public class fragmentMypage extends Fragment {
                 planCalorieEditText.setVisibility(View.GONE);
                 contentTextView.setVisibility(View.VISIBLE);
                 planCalorieTextView.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        //로그아웃
+        logout_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
 
             }
         });
