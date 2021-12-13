@@ -176,10 +176,11 @@ public class fragmentMypage extends Fragment {
                 dateTextView.setVisibility(View.VISIBLE);
                 save_Btn.setVisibility(View.VISIBLE);
                 contentEditText.setVisibility(View.VISIBLE);
-                contentTextView.setVisibility(View.INVISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.GONE);
+                planCalorieEditText.setVisibility(View.VISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
                 dateTextView.setText(String.format("%d-%d-%d", year, month + 1, dayOfMonth));
                 contentEditText.setText("");
                 planCalorieEditText.setText("");
@@ -197,11 +198,11 @@ public class fragmentMypage extends Fragment {
 
                 saveMemo(fdate,num,str);
 
-                save_Btn.setVisibility(View.INVISIBLE);
+                save_Btn.setVisibility(View.GONE);
                 cha_Btn.setVisibility(View.VISIBLE);
                 del_Btn.setVisibility(View.VISIBLE);
-                contentEditText.setVisibility(View.INVISIBLE);
-                planCalorieEditText.setVisibility(View.INVISIBLE);
+                contentEditText.setVisibility(View.GONE);
+                planCalorieEditText.setVisibility(View.GONE);
                 contentTextView.setVisibility(View.VISIBLE);
                 planCalorieTextView.setVisibility(View.VISIBLE);
 
@@ -228,14 +229,14 @@ public class fragmentMypage extends Fragment {
             }
         });
 
-        planCalorieEditText.setVisibility(View.INVISIBLE);
-        contentEditText.setVisibility(View.INVISIBLE);
+        planCalorieEditText.setVisibility(View.GONE);
+        contentEditText.setVisibility(View.GONE);
         contentTextView.setVisibility(View.VISIBLE);
         contentTextView.setText(str);
         planCalorieTextView.setVisibility(View.VISIBLE);
         planCalorieTextView.setText(num);
 
-        save_Btn.setVisibility(View.INVISIBLE);
+        save_Btn.setVisibility(View.GONE);
         cha_Btn.setVisibility(View.VISIBLE);
         del_Btn.setVisibility(View.VISIBLE);
 
@@ -243,15 +244,15 @@ public class fragmentMypage extends Fragment {
             @Override
             public void onClick(View view) {
                 contentEditText.setVisibility(View.VISIBLE);
-                contentTextView.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.GONE);
                 contentEditText.setText(str);
                 planCalorieEditText.setVisibility(View.VISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
                 planCalorieEditText.setText(num);
 
                 save_Btn.setVisibility(View.VISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
 
                 str = contentEditText.getText().toString().trim();
                 num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
@@ -265,25 +266,25 @@ public class fragmentMypage extends Fragment {
         del_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contentTextView.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.GONE);
                 contentEditText.setText("");
                 contentEditText.setVisibility(View.VISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
                 planCalorieEditText.setText("");
                 planCalorieEditText.setVisibility(View.VISIBLE);
                 save_Btn.setVisibility(View.VISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
                 removeMemo(fdate);
             }
         });
         if(contentTextView.getText()==null && planCalorieTextView.getText()==null){
-            contentTextView.setVisibility(View.INVISIBLE);
-            planCalorieTextView.setVisibility(View.INVISIBLE);
+            contentTextView.setVisibility(View.GONE);
+            planCalorieTextView.setVisibility(View.GONE);
             dateTextView.setVisibility(View.VISIBLE);
             save_Btn.setVisibility(View.VISIBLE);
-            cha_Btn.setVisibility(View.INVISIBLE);
-            del_Btn.setVisibility(View.INVISIBLE);
+            cha_Btn.setVisibility(View.GONE);
+            del_Btn.setVisibility(View.GONE);
             contentEditText.setVisibility(View.VISIBLE);
             planCalorieEditText.setVisibility(View.VISIBLE);
         }
