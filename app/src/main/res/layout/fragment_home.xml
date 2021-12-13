@@ -111,7 +111,7 @@
                    android:layout_height="70dp"
                    android:layout_margin="7dp"
                    android:background="@drawable/mainbutton_state"
-                   android:drawableLeft="@drawable/ic_baseline_all_inclusive_24"
+                   android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
                    android:drawablePadding="18dip"
                    android:gravity="left|center_vertical"
                    android:paddingLeft="18dip"
