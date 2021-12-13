@@ -133,7 +133,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
 
         //사용자의 하루 운동 소모량
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
-        databaseReference.child("record").child("daily").child(time).child("calorie").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("record").child("total").child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 calorie = (double) dataSnapshot.getValue(Double.class);
