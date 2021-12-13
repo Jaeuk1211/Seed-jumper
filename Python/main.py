@@ -281,13 +281,18 @@ while camera_video.isOpened():
                 combo = 0
 
     # Display the frame.
-    if percent >= 100:
+    if percent >= goal:
         cv2.putText(frame, 'Clear!!', (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
         #endtime = time.time()
         break
     else:
         if percent!= 0 and percent%10 == 0 and soundflag == 0:
-            soundb = pygame.mixer.Sound('Python/numaudio/'+ str(percent)+'.wav')
+            temp = ''
+            if percent >= 100 :
+                temp = str(percent)[1:]
+            else :
+                temp = str(percent)
+            soundb = pygame.mixer.Sound('Python/numaudio/'+ temp +'.wav')
             soundb.play()
             soundflag = 1
         else :

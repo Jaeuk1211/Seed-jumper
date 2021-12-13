@@ -28,6 +28,7 @@ import java.util.Date;
 public class fragmentHome extends Fragment implements CircleProgressBar.ProgressFormatter{
 
     private TextView amount_calorie_consumption;
+    private TextView nameView;
     private Button normal_btn;
     private Button challenge_btn;
     private Button recommend_btn;
@@ -89,6 +90,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
         challenge_btn = (Button) view.findViewById(R.id.challenge_exercise);
         recommend_btn = (Button) view.findViewById(R.id.recommend_exercise);
         circleProgressBar = view.findViewById(R.id.cpb_circlebar);
+        nameView = view.findViewById(R.id.nameView);
 
         String time = getTime();
 
@@ -121,7 +123,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             public void onClick(View view) {
                 if(exerciseTime > 0)
                 {
-                    Intent intent = new Intent(view.getContext(), challengeActivity.class);
+                    Intent intent = new Intent(view.getContext(), recommendActivity.class);
                     view.getContext().startActivity(intent);
                 }
                 else{
@@ -131,9 +133,25 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
             }
         });
 
-        //사용자의 하루 운동 소모량
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid);
-        databaseReference.child("record").child("daily").child(time).child("calorie").addValueEventListener(new ValueEventListener() {
+
+        //사용자의 이름 불러오기
+        databaseReference.child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                 String name = dataSnapshot.getValue(String.class);
+                 nameView.setText(name + "님의 칼로리 소모량");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+        //사용자의 하루 운동 소모량
+        databaseReference.child("record").child("total").child("calorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 calorie = (double) dataSnapshot.getValue(Double.class);
@@ -141,7 +159,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
                 amount_calorie_consumption.setText(calorie + "kcal");
 
                 //원형 프로그래스 바 - 사용자의 목표 칼로리 대비 얼마나 많은 칼로리를 소모했느냐
-                planCalorie = 66;
+                planCalorie = 1000;
                 progress = (int)( calorie / planCalorie * 100);
                 if (progress > 100)
                     progress = 100;
@@ -153,6 +171,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
                 Log.e("fragmentHome", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+
 
         // Inflate the layout for this fragment
         return view;

@@ -42,12 +42,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();//use firebase get instance
 
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            //if already logged in
-//            finish();//finish and go to Main activity
-//
-//            startActivity(new Intent(getApplicationContext(), MainActivity.class)); //
-//        }
+        if (firebaseAuth.getCurrentUser() != null) {
+            //if already logged in
+            finish();//finish and go to Main activity
+
+            startActivity(new Intent(getApplicationContext(), MainActivity.class)); //
+        }
         editTextLoginEmail = (EditText) findViewById(R.id.editTextLoginEmail);
         editTextLoginPassword = (EditText) findViewById(R.id.editTextLoginPassword);
         textviewSignup = (TextView) findViewById(R.id.textViewSignUp);

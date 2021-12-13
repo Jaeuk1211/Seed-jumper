@@ -185,7 +185,6 @@ public class ProgressExerciseActivity extends AppCompatActivity {
                 userReference.child("users").child(uid).child("record").child("total").child("time").setValue(exerciseTime);
                 goItemPage();
             }
-            Log.d("connection_end",  response);
             return null;
         }
 
@@ -197,7 +196,6 @@ public class ProgressExerciseActivity extends AppCompatActivity {
 
     public void goItemPage(){
         boolean find = false;
-        Log.d("level2", Integer.toString(genre));
         int k;
         for(k = 0; k < i; k ++)
         {
@@ -211,6 +209,14 @@ public class ProgressExerciseActivity extends AppCompatActivity {
         {
             userReference.child("users").child(uid).child("record").child("clearStage").child("stageCode").setValue(message);
             Intent intent = new Intent(getApplicationContext(), getNewItem.class);
+            intent.putExtra("level", level);
+            intent.putExtra("genre", genre);
+            startActivity(intent);
+            finish();
+        }
+
+        else{
+            Intent intent = new Intent(getApplicationContext(), clearStage.class);
             intent.putExtra("level", level);
             intent.putExtra("genre", genre);
             startActivity(intent);

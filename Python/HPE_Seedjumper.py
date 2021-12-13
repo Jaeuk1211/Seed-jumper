@@ -18,7 +18,7 @@ mp_drawing = mp.solutions.drawing_utils
 
 # Initializing pygame module for audio feedback
 pygame.init() #turn all of pygame on.
-sound = pygame.mixer.Sound
+sounda = pygame.mixer.Sound
 
 
 def detectPose(image, pose, display=True):

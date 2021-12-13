@@ -46,16 +46,13 @@ public class fragmentMypage extends Fragment {
 
     //스케줄러
     public CalendarView calendarView;
-    public Button cha_Btn, del_Btn, save_Btn;
+    public Button cha_Btn, del_Btn, save_Btn, logout_Btn;
     public TextView dateTextView, planCalorieTextView, contentTextView;
     public EditText contentEditText, planCalorieEditText;
-    private String str;
-    private int num;
+    private String str = null;
+    private String num = null;
+    public String fdate=null;
 
-    Date mDate;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
-    long mNow;
-    String time;
 
     FirebaseAuth firebaseAuth;
     private String uid;
@@ -90,10 +87,10 @@ public class fragmentMypage extends Fragment {
         save_Btn = view.findViewById(R.id.save_Btn);
         del_Btn = view.findViewById(R.id.del_Btn);
         cha_Btn = view.findViewById(R.id.cha_Btn);
+        logout_Btn = view.findViewById(R.id.logout_Btn);
         planCalorieEditText = view.findViewById(R.id.planCalorieEditText);
         contentEditText = view.findViewById(R.id.contentEditText);
 
-        time = getTime();
 
         Random random = new Random();
         quoteNum = random.nextInt(5);
@@ -180,53 +177,84 @@ public class fragmentMypage extends Fragment {
                 dateTextView.setVisibility(View.VISIBLE);
                 save_Btn.setVisibility(View.VISIBLE);
                 contentEditText.setVisibility(View.VISIBLE);
-                contentTextView.setVisibility(View.INVISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
-                dateTextView.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
+                contentTextView.setVisibility(View.GONE);
+                planCalorieEditText.setVisibility(View.VISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
+                dateTextView.setText(String.format("%d-%d-%d", year, month + 1, dayOfMonth));
                 contentEditText.setText("");
                 planCalorieEditText.setText("");
-                checkDay(year, month, dayOfMonth, uid);
+                checkDay(year, month, dayOfMonth);
             }
         });
 
         save_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                saveMemo(time);
                 str = contentEditText.getText().toString().trim();
                 contentTextView.setText(str);
-                num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
+                num = planCalorieEditText.getText().toString().trim();
                 planCalorieTextView.setText(num);
-                save_Btn.setVisibility(View.INVISIBLE);
+
+                saveMemo(fdate,num,str);
+
+                save_Btn.setVisibility(View.GONE);
                 cha_Btn.setVisibility(View.VISIBLE);
                 del_Btn.setVisibility(View.VISIBLE);
-                contentEditText.setVisibility(View.INVISIBLE);
-                planCalorieEditText.setVisibility(View.INVISIBLE);
+                contentEditText.setVisibility(View.GONE);
+                planCalorieEditText.setVisibility(View.GONE);
                 contentTextView.setVisibility(View.VISIBLE);
                 planCalorieTextView.setVisibility(View.VISIBLE);
 
             }
         });
 
+        //로그아웃
+        logout_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+
+            }
+        });
 
         return view;
     }
 
-    public void  checkDay(int cYear,int cMonth,int cDay,String uid){
-        //수정필요
-        //str=new String(fileData);
+    public void  checkDay(int cYear,int cMonth,int cDay){
 
-        planCalorieEditText.setVisibility(View.INVISIBLE);
-        contentEditText.setVisibility(View.INVISIBLE);
+        fdate = cYear+"-"+(cMonth+1)+"-"+cDay;
+        user.child("record").child("daily").child(fdate).child("planCalorie").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                num = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        user.child("record").child("daily").child(fdate).child("content").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                str = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        planCalorieEditText.setVisibility(View.GONE);
+        contentEditText.setVisibility(View.GONE);
         contentTextView.setVisibility(View.VISIBLE);
         contentTextView.setText(str);
         planCalorieTextView.setVisibility(View.VISIBLE);
         planCalorieTextView.setText(num);
 
-        save_Btn.setVisibility(View.INVISIBLE);
+        save_Btn.setVisibility(View.GONE);
         cha_Btn.setVisibility(View.VISIBLE);
         del_Btn.setVisibility(View.VISIBLE);
 
@@ -234,42 +262,47 @@ public class fragmentMypage extends Fragment {
             @Override
             public void onClick(View view) {
                 contentEditText.setVisibility(View.VISIBLE);
-                contentTextView.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.GONE);
                 contentEditText.setText(str);
                 planCalorieEditText.setVisibility(View.VISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
                 planCalorieEditText.setText(num);
 
                 save_Btn.setVisibility(View.VISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
+
+                //str = contentEditText.getText().toString().trim();
+                //num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
                 contentTextView.setText(contentEditText.getText());
                 planCalorieTextView.setText(planCalorieEditText.getText());
+
+
             }
 
         });
         del_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contentTextView.setVisibility(View.INVISIBLE);
+                contentTextView.setVisibility(View.GONE);
                 contentEditText.setText("");
                 contentEditText.setVisibility(View.VISIBLE);
-                planCalorieTextView.setVisibility(View.INVISIBLE);
+                planCalorieTextView.setVisibility(View.GONE);
                 planCalorieEditText.setText("");
                 planCalorieEditText.setVisibility(View.VISIBLE);
                 save_Btn.setVisibility(View.VISIBLE);
-                cha_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
-                removeMemo(time);
+                cha_Btn.setVisibility(View.GONE);
+                del_Btn.setVisibility(View.GONE);
+                removeMemo(fdate);
             }
         });
         if(contentTextView.getText()==null && planCalorieTextView.getText()==null){
-            contentTextView.setVisibility(View.INVISIBLE);
-            planCalorieTextView.setVisibility(View.INVISIBLE);
+            contentTextView.setVisibility(View.GONE);
+            planCalorieTextView.setVisibility(View.GONE);
             dateTextView.setVisibility(View.VISIBLE);
             save_Btn.setVisibility(View.VISIBLE);
-            cha_Btn.setVisibility(View.INVISIBLE);
-            del_Btn.setVisibility(View.INVISIBLE);
+            cha_Btn.setVisibility(View.GONE);
+            del_Btn.setVisibility(View.GONE);
             contentEditText.setVisibility(View.VISIBLE);
             planCalorieEditText.setVisibility(View.VISIBLE);
         }
@@ -277,22 +310,16 @@ public class fragmentMypage extends Fragment {
 
     @SuppressLint("WrongConstant")
     public void removeMemo(String readDay){
-
-        user.child("record").child("daily").child(readDay).child("planCalorie").setValue("0");
+        user.child("record").child("daily").child(readDay).child("planCalorie").setValue("");
         user.child("record").child("daily").child(readDay).child("content").setValue("");
 
-
     }
-    //수정필요
+
     @SuppressLint("WrongConstant")
-    public void saveMemo(String readDay){
-            String content=contentEditText.getText().toString();
+    public void saveMemo(String readDay, String calorie, String content){
+        user.child("record").child("daily").child(readDay).child("planCalorie").setValue(calorie);
+        user.child("record").child("daily").child(readDay).child("content").setValue(content);
     }
 
-    private String getTime(){
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-        return mFormat.format(mDate);
-    }
 
 }

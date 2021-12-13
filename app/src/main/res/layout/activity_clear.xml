@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/getitem_background"
+    android:gravity="center">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Congratulateion!"
+        android:textSize="45dp"
+        android:fontFamily="@font/lobster_regular"
+        android:textColor="#66CEAC"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Clear"
+        android:textSize="37dp"
+        android:fontFamily="@font/han"
+        android:textColor="#005A58"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/stageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Country LV.1!"
+        android:textSize="37dp"
+        android:fontFamily="@font/han"
+        android:textColor="#005A58"
+        android:layout_marginBottom="50dp"/>
+
+
+
+</LinearLayout>

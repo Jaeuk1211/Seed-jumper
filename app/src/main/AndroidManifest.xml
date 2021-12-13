@@ -40,6 +40,8 @@
         <activity android:name=".ExerciseSplash"/>
         <activity android:name=".challangeSplash"/>
         <activity android:name=".getNewItem"/>
+        <activity android:name=".recommendActivity"/>
+        <activity android:name=".clearStage"/>
 
     </application>
 
