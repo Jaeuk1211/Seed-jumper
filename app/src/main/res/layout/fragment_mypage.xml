@@ -95,7 +95,7 @@
 
                     <LinearLayout
                         android:id="@+id/exercise_calender"
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
@@ -112,6 +112,7 @@
                             android:textSize="25dp"/>
 
                         <TextView
+                            android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
@@ -127,20 +128,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginLeft="8dp"
-                            android:layout_marginTop="40dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginRight="8dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.488"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView1"
+                            />
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity= "center"
-                            android:id="@+id/dateTextView" android:layout_marginTop="16dp"
+                            android:textSize="25dp"
+                            android:id="@+id/dateTextView" android:layout_marginTop="8dp"
                             app:layout_constraintTop_toBottomOf="@+id/calendarView" app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
                             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
@@ -148,9 +152,8 @@
 
                         //목표 칼로리 소모량
                         <EditText
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textMultiLine"
                             android:ems="10"
                             android:id="@+id/planCalorieEditText"
                             app:layout_constraintTop_toBottomOf="@+id/dateTextView" android:layout_marginTop="16dp"
@@ -160,8 +163,8 @@
                             android:visibility="invisible"/>
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:id="@+id/planCalorieTextView"
                             app:layout_constraintTop_toTopOf="@+id/planCalorieEditText"
                             app:layout_constraintBottom_toBottomOf="@+id/planCalorieEditText" app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +174,7 @@
 
                         //메모 내용 부분
                         <EditText
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:inputType="textMultiLine"
                             android:ems="10"
@@ -183,8 +186,8 @@
                             android:visibility="invisible"/>
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:id="@+id/contentTextView"
                             app:layout_constraintTop_toTopOf="@+id/contentEditText"
                             app:layout_constraintBottom_toBottomOf="@+id/contentEditText" app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +197,7 @@
 
                         <Button
                             android:text="저장"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_marginBottom="20dp"
                             android:layout_height="wrap_content"
                             android:id="@+id/save_Btn" android:layout_marginTop="16dp"
@@ -207,6 +210,7 @@
                             android:text="수정"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
                             android:id="@+id/cha_Btn"
                             app:layout_constraintBaseline_toBaselineOf="@+id/save_Btn" app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
@@ -216,6 +220,7 @@
                             android:text="삭제"
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
                             android:id="@+id/del_Btn"
                             app:layout_constraintBaseline_toBaselineOf="@+id/cha_Btn" app:layout_constraintEnd_toEndOf="@+id/save_Btn"
                             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:visibility="invisible"></Button>
