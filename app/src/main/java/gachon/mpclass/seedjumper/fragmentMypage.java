@@ -50,7 +50,7 @@ public class fragmentMypage extends Fragment {
     public TextView dateTextView, planCalorieTextView, contentTextView;
     public EditText contentEditText, planCalorieEditText;
     private String str = null;
-    private int num = 0;
+    private String num = null;
     public String fdate=null;
 
 
@@ -193,7 +193,7 @@ public class fragmentMypage extends Fragment {
             public void onClick(View view) {
                 str = contentEditText.getText().toString().trim();
                 contentTextView.setText(str);
-                num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
+                num = planCalorieEditText.getText().toString().trim();
                 planCalorieTextView.setText(num);
 
                 saveMemo(fdate,num,str);
@@ -215,17 +215,24 @@ public class fragmentMypage extends Fragment {
     public void  checkDay(int cYear,int cMonth,int cDay){
 
         fdate = cYear+"-"+(cMonth+1)+"-"+cDay;
-        user.child("record").child("daily").child(fdate).addValueEventListener(new ValueEventListener() {
+        user.child("record").child("daily").child(fdate).child("planCalorie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Memo memo = dataSnapshot.getValue(Memo.class);
-                num = memo.getPlanCalorie();
-                str = memo.getContent();
+                num = dataSnapshot.getValue(String.class);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        user.child("record").child("daily").child(fdate).child("content").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                str = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
@@ -254,10 +261,10 @@ public class fragmentMypage extends Fragment {
                 cha_Btn.setVisibility(View.GONE);
                 del_Btn.setVisibility(View.GONE);
 
-                str = contentEditText.getText().toString().trim();
-                num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
-                contentTextView.setText(str);
-                planCalorieTextView.setText(num);
+                //str = contentEditText.getText().toString().trim();
+                //num = Integer.parseInt(planCalorieEditText.getText().toString().trim());
+                contentTextView.setText(contentEditText.getText());
+                planCalorieTextView.setText(planCalorieEditText.getText());
 
 
             }
@@ -278,7 +285,7 @@ public class fragmentMypage extends Fragment {
                 removeMemo(fdate);
             }
         });
-        if(contentTextView.getText()==null && planCalorieTextView.getText()==null){
+        if(contentTextView.getText()==null && planCalorieTextView.getText()=="0"){
             contentTextView.setVisibility(View.GONE);
             planCalorieTextView.setVisibility(View.GONE);
             dateTextView.setVisibility(View.VISIBLE);
@@ -292,14 +299,15 @@ public class fragmentMypage extends Fragment {
 
     @SuppressLint("WrongConstant")
     public void removeMemo(String readDay){
-        Memo memo = new Memo(0, null);
-        user.child("record").child("daily").child(readDay).setValue(memo);
+        user.child("record").child("daily").child(readDay).child("planCalorie").setValue("");
+        user.child("record").child("daily").child(readDay).child("content").setValue("");
+
     }
 
     @SuppressLint("WrongConstant")
-    public void saveMemo(String readDay, int calorie, String content){
-        Memo memo = new Memo(calorie, content);
-        user.child("record").child("daily").child(readDay).setValue(memo);
+    public void saveMemo(String readDay, String calorie, String content){
+        user.child("record").child("daily").child(readDay).child("planCalorie").setValue(calorie);
+        user.child("record").child("daily").child(readDay).child("content").setValue(content);
     }
 
 
