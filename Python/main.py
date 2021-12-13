@@ -281,7 +281,7 @@ while camera_video.isOpened():
                 combo = 0
 
     # Display the frame.
-    if percent > goal:
+    if percent >= goal:
         cv2.putText(frame, 'Clear!!', (1000, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
         #endtime = time.time()
         break
