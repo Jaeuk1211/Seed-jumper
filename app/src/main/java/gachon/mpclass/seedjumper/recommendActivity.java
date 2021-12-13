@@ -66,7 +66,7 @@ public class recommendActivity extends AppCompatActivity {
                     Log.d("clearStage0", code);
                     String levelIndex = code.substring(0,1);
                     String genreIndex = code.substring(1);
-                    enableStage[Integer.parseInt(levelIndex)][Integer.parseInt(genreIndex)] = code;
+                    enableStage[Integer.parseInt(levelIndex) - 1][Integer.parseInt(genreIndex) - 1] = code;
                 }
             }
 

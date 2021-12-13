@@ -41,7 +41,7 @@ public class  gardenActivity extends AppCompatActivity {
     ImageView[] iv = new ImageView[9];
     int addIv = 0;
     FrameLayout garden;
-    FirebaseUser loginUser;
+    FirebaseUser loginUser;//
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = userDatabase.getReference();
     String flowers;
@@ -54,8 +54,8 @@ public class  gardenActivity extends AppCompatActivity {
 
         Arrays.fill(enableItem, false);
 
-        loginUser = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = loginUser != null ? loginUser.getUid() : null;
+        loginUser = FirebaseAuth.getInstance().getCurrentUser();//
+        String uid = loginUser != null ? loginUser.getUid() : null;//
 
         garden = findViewById(R.id.top_garden);
         final int width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());

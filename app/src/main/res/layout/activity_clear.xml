@@ -15,7 +15,7 @@
         android:textSize="45dp"
         android:fontFamily="@font/lobster_regular"
         android:textColor="#66CEAC"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="100dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:textSize="37dp"
         android:fontFamily="@font/han"
         android:textColor="#005A58"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="80dp"/>
 
 
 

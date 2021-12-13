@@ -10,4 +10,5 @@
     <color name="colorAccent">#A7F8BE</color>
     <color name="mainColor">#A7F9BE</color>
     <color name="gray_100">#BEC3BF</color>
+    <color name="progress">#005A58</color>
 </resources>

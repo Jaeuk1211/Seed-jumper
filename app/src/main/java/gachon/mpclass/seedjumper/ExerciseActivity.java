@@ -41,7 +41,7 @@ public class ExerciseActivity extends AppCompatActivity {
     String uid;
     private FirebaseDatabase userDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = userDatabase.getReference();
-    int level = 0;
+    int level = 1;
     int genre = 0;
     String[] clearStage;
     int i = 0;
@@ -76,7 +76,7 @@ public class ExerciseActivity extends AppCompatActivity {
         //progressPer = findViewById(R.id.percent);
         message = Integer.toString(level) + Integer.toString(genre);
 
-        MyClientTask myClientTask = new MyClientTask("172.30.1.15", 7777, message);
+        MyClientTask myClientTask = new MyClientTask("192.168.120.190", 7777, message);
         myClientTask.execute();
 
     }

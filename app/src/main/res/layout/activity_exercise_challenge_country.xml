@@ -11,7 +11,6 @@
         android:layout_width="330dp"
         android:layout_height="650dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/exercise_background"
         android:layout_gravity="center"
         android:orientation="vertical">
 

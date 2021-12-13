@@ -98,7 +98,7 @@ public class ProgressExerciseActivity extends AppCompatActivity {
         progressPer = findViewById(R.id.percent);
         message = Integer.toString(level) + Integer.toString(genre);
 
-        MyClientTask myClientTask = new MyClientTask("172.30.1.15", 7777, message);
+        MyClientTask myClientTask = new MyClientTask("192.168.120.190", 7777, message);
         myClientTask.execute();
 
     }
@@ -150,7 +150,7 @@ public class ProgressExerciseActivity extends AppCompatActivity {
                         public void run() {
                             combo.setText(array[1]);
                             percentage.setProgress(Integer.parseInt(array[0]));
-                            progressPer.setText(array[0]);
+                            progressPer.setText(array[0] + " %");
                         }
                     });
                     Thread.sleep(100);
