@@ -285,7 +285,7 @@ public class fragmentMypage extends Fragment {
                 removeMemo(fdate);
             }
         });
-        if(contentTextView.getText()==null && planCalorieTextView.getText()=="0"){
+        if(contentTextView.getText()==null && planCalorieTextView.getText()==null){
             contentTextView.setVisibility(View.GONE);
             planCalorieTextView.setVisibility(View.GONE);
             dateTextView.setVisibility(View.VISIBLE);
