@@ -141,7 +141,7 @@ public class fragmentHome extends Fragment implements CircleProgressBar.Progress
                 amount_calorie_consumption.setText(calorie + "kcal");
 
                 //원형 프로그래스 바 - 사용자의 목표 칼로리 대비 얼마나 많은 칼로리를 소모했느냐
-                planCalorie = 66;
+                planCalorie = 1000;
                 progress = (int)( calorie / planCalorie * 100);
                 if (progress > 100)
                     progress = 100;
