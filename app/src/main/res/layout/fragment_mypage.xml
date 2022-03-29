@@ -111,6 +111,7 @@
                             android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="25dp"/>
 
+
                         <TextView
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
@@ -261,7 +262,7 @@
                             android:fontFamily="@font/nanumsquareroundr"
                             android:text="누적 운동 시간"
                             android:textColor="@color/black"
-                            android:textSize="25dp" />
+                            android:textSize="20dp" />
 
                         <TextView
                             android:id="@+id/totalTime"
@@ -269,14 +270,14 @@
                             android:layout_height="wrap_content"
                             android:text="0분"
                             android:textColor="@color/black"
-                            android:textSize="30dp"
+                            android:textSize="25dp"
                             android:layout_marginLeft="30dp"
                             android:layout_marginTop="15dp"/>
 
                     </LinearLayout>
 
 
-                   <LinearLayout
+                    <LinearLayout
                         android:id="@+id/exercise_count"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -290,7 +291,7 @@
                             android:fontFamily="@font/nanumsquareroundr"
                             android:text="누적 줄넘기 횟수"
                             android:textColor="@color/black"
-                            android:textSize="25dp" />
+                            android:textSize="20dp" />
 
                         <TextView
                             android:id="@+id/totalCount"
@@ -298,7 +299,7 @@
                             android:layout_height="wrap_content"
                             android:text="0회"
                             android:textColor="@color/black"
-                            android:textSize="30dp"
+                            android:textSize="25dp"
                             android:layout_marginLeft="30dp"
                             android:layout_marginTop="15dp"/>
 
@@ -318,7 +319,7 @@
                             android:fontFamily="@font/nanumsquareroundr"
                             android:text="누적 칼로리 소모량"
                             android:textColor="@color/black"
-                            android:textSize="25dp" />
+                            android:textSize="20dp" />
 
                         <TextView
                             android:id="@+id/totalCalorie"
@@ -326,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:text="0kcal"
                             android:textColor="@color/black"
-                            android:textSize="30dp"
+                            android:textSize="25dp"
                             android:layout_marginLeft="30dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="40dp"/>
@@ -339,13 +340,30 @@
                         android:orientation="vertical">
 
                         <Button
+                            android:text="사용자 정보 변경"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="8dp"
+                            android:id="@+id/modify_Btn" android:layout_marginTop="15dp"
+                            app:layout_constraintTop_toBottomOf="@+id/totalCalorie"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:onClick="showAlertDialogButtonClicked"
+                            />
+
+                        <Button
                             android:text="로그아웃"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginBottom="40dp"
-                            android:id="@+id/logout_Btn" android:layout_marginTop="15dp"
-                            app:layout_constraintTop_toBottomOf="@+id/totalCalorie"
+                            android:id="@+id/logout_Btn" android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/modify_Btn"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"
                             android:layout_marginRight="8dp"

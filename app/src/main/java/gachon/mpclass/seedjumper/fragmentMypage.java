@@ -2,6 +2,8 @@ package gachon.mpclass.seedjumper;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +14,10 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +31,7 @@ import java.util.Random;
 
 public class fragmentMypage extends Fragment {
 
+    private static final int DIALOG_REQUEST_CODE = 1234;
     View targetView;
     Button drawerButton;
     boolean drawerToggle;
@@ -41,7 +46,7 @@ public class fragmentMypage extends Fragment {
 
     //스케줄러
     public CalendarView calendarView;
-    public Button cha_Btn, del_Btn, save_Btn, logout_Btn;
+    public Button cha_Btn, del_Btn, save_Btn, modify_Btn, logout_Btn;
     public TextView dateTextView, planCalorieTextView, contentTextView;
     public EditText contentEditText, planCalorieEditText;
     private String str = null;
@@ -82,6 +87,7 @@ public class fragmentMypage extends Fragment {
         save_Btn = view.findViewById(R.id.save_Btn);
         del_Btn = view.findViewById(R.id.del_Btn);
         cha_Btn = view.findViewById(R.id.cha_Btn);
+        modify_Btn = view.findViewById(R.id.modify_Btn);
         logout_Btn = view.findViewById(R.id.logout_Btn);
         planCalorieEditText = view.findViewById(R.id.planCalorieEditText);
         contentEditText = view.findViewById(R.id.contentEditText);
@@ -205,6 +211,14 @@ public class fragmentMypage extends Fragment {
             }
         });
 
+        //사용자 정보 변경
+        modify_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                show();
+            }
+        });
+
         //로그아웃
         logout_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +230,30 @@ public class fragmentMypage extends Fragment {
         });
 
         return view;
+    }
+
+    //사용자 정보 변경 버튼 클릭시 다이얼로그 프레그먼트를 보여주고
+    //다이얼로그가 닫히면 성공메세지 화면에 출력
+    void show()
+    {
+        DialogFragment newFragment = new DialogFragmentExample();
+        newFragment.setTargetFragment(this, DIALOG_REQUEST_CODE);
+        newFragment.show(getFragmentManager(),"dialog");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == DIALOG_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                String name = data.getExtras().getString("name");
+                String pass = data.getExtras().getString("password");
+                String weight = data.getExtras().getString("weight");
+
+                Toast.makeText(getActivity(), "사용자 정보가 변경되었습니다", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     public void  checkDay(int cYear,int cMonth,int cDay){
@@ -311,10 +349,9 @@ public class fragmentMypage extends Fragment {
     }
 
     @SuppressLint("WrongConstant")
-    public void saveMemo(String readDay, String calorie, String content){
+    public void saveMemo(String readDay, String calorie, String content) {
         user.child("record").child("daily").child(readDay).child("planCalorie").setValue(calorie);
         user.child("record").child("daily").child(readDay).child("content").setValue(content);
     }
-
 
 }

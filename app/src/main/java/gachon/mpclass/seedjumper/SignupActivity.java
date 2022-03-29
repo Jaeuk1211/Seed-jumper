@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -46,6 +45,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
 
+    private int weight = 55;
     Date mDate;
     SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
     long mNow;
@@ -138,7 +138,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             String uid = mAuth.getCurrentUser().getUid();
-                            User newUser = new User(uid, email, name, password);
+                            User newUser = new User(uid, email, name, password, weight);
                             //newUser.setCreditCard(creditCard);
                             FirebaseDatabase.getInstance().getReference("users")
                                     .child(uid)
