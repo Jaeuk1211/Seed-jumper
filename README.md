@@ -8,7 +8,6 @@ project name : Seed Jumper
 
 #
 
-
 [Team members info]
 
 201735820 Jaeuk Kim
@@ -16,6 +15,20 @@ project name : Seed Jumper
 201835523 Soomin Jeong
 
 201935118 Suhyeon Lim
+
+#
+
+<img width="1353" alt="seed" src="https://user-images.githubusercontent.com/76028521/160591845-0ef687cb-d68c-47cf-830f-b0aadd0ac1cd.png">
+
+#
+
+Idea Proposal :
+
+https://www.youtube.com/watch?v=sbCroblgtr0&t=291s
+
+Implementation Presentation : 
+
+https://www.youtube.com/watch?v=YBO_KQeR8m4&list=LL&index=12&t=394s
 
 #
 
