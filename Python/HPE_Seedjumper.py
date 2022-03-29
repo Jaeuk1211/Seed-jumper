@@ -7,6 +7,19 @@ import matplotlib as plt
 import time
 import pygame
 
+"""
+This is a program that performs only computer environment
+
+There are 3 functions in this program
+1. detectPose()
+2. calculateAngle()
+3. classifyPose()
+
+We have modified 'GoogleMediapipe'
+And got some insights from 'Bleed AI'
+    > YouTube Video [Real-Time 3D Pose Detection & Pose Classification | Mediapipe | OpenCV | Python]
+"""
+
 # Initializing mediapipe pose class.
 mp_pose = mp.solutions.pose
 
@@ -100,16 +113,15 @@ def calculateAngle(landmark1, landmark2, landmark3):
 
 def classifyPose(landmarks, output_image, display=False):
     '''
-    This function classifies yoga poses depending upon the angles of various body joints.
+    This function decides jump poses depending upon the angles of various body joints.
     Args:
         landmarks: A list of detected landmarks of the person whose pose needs to be classified.
         output_image: A image of the person with the detected pose landmarks drawn.
-        display: A boolean value that is if set to true the function displays the resultant image with the pose label 
+        display: A boolean value that is if set to true the function displays the resultant image with the pose label
         written on it and returns nothing.
     Returns:
-        output_image: The image with the detected pose landmarks drawn and pose label written.
-        label: The classified pose label of the person in the output_image.
-
+        output_image: The image with the detected pose landmarks drawn and label & combo written.
+        label: The status that you are jumping or not.
     '''
     
     # Initialize the label of the pose. It is not known at this stage.
