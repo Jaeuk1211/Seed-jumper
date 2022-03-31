@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_clear.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_exercise.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_exercise_challenge.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_find.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_garden.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_new_item.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_recommend.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/dialog_modify.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Seed-jumper2/app/src/main/res/layout/fragment_mypage.xml" value="0.1" />
       </map>
     </option>

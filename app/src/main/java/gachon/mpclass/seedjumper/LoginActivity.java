@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "LoginActivity";
     EditText editTextLoginEmail;
     EditText editTextLoginPassword;
-    Button buttonSignin;
+    Button buttonSignIn;
     TextView textviewSignup;
     TextView textviewMessage;
     TextView textviewFindPassword;
@@ -56,14 +56,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvLogin = (TextView) findViewById(R.id.tvLogin);
         tvToYourAccount = (TextView) findViewById(R.id.tvToYourAccount);
 
-        buttonSignin = (Button) findViewById(R.id.buttonLogIn);
-        progressDialog = new ProgressDialog(this); //conncect Function
+        buttonSignIn = (Button) findViewById(R.id.buttonLogIn);
+        progressDialog = new ProgressDialog(this); //connect Function
 
 
         tvLogin.setText("Log in");
         tvToYourAccount.setText(" to your Account");
 //        button click event
-        buttonSignin.setOnClickListener(this);
+        buttonSignIn.setOnClickListener(this);
         textviewSignup.setOnClickListener(this);
         textviewFindPassword.setOnClickListener(this);
     }
@@ -125,11 +125,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        EditText uemail = (EditText)findViewById(R.id.editTextLoginEmail);
-        EditText upassword = (EditText)findViewById(R.id.editTextLoginPassword);
-
         /* *******if click Login button , can login ******** */
-        if (view == buttonSignin) {
+        if (view == buttonSignIn) {
             userLogin();
         }
 

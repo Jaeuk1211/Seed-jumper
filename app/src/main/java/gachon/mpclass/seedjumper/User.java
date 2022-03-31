@@ -7,17 +7,15 @@ public class User implements Serializable {
     private String email;
     private String pwd;
     private String name;
-    private String id;
     private int weight;
 
     public User() {
     }
 
-    public User(String id, String email, String name, String pwd, int weight) {
+    public User(String email, String name, String pwd, int weight) {
         this.email = email;
         this.name = name;
         this.pwd = pwd;
-        this.id = id;
         this.weight = weight;
     }
 
@@ -34,8 +32,6 @@ public class User implements Serializable {
         return pwd;
     }
 
-    public String getId() { return id;  }
-
     public int getWeight() {return weight;}
 
 
@@ -51,8 +47,6 @@ public class User implements Serializable {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
-
-    public void setId(String id) { this.id = id; }
 
     public void setWeight(int weight) { this.weight = weight; }
 

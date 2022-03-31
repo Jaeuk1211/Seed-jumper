@@ -27,7 +27,7 @@ import java.net.UnknownHostException;
 
 public class ProgressExerciseActivity extends AppCompatActivity {
 
-    private int REQUEST_TEST = 1;
+    private final int REQUEST_TEST = 1;
     String message="empty";
     int stop = 1;
     String response = "";

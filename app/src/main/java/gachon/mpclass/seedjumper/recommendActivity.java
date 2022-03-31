@@ -52,7 +52,7 @@ public class recommendActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragmentMypage", String.valueOf(databaseError.toException())); // 에러문 출력
+                Log.e("fragmentMyPage", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
 

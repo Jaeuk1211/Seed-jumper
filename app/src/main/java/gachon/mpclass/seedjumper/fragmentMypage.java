@@ -3,7 +3,6 @@ package gachon.mpclass.seedjumper;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +34,6 @@ public class fragmentMypage extends Fragment {
     View targetView;
     Button drawerButton;
     boolean drawerToggle;
-    Button goToGarden;
     int quoteNum = 0;
     TextView quoteText;
 
