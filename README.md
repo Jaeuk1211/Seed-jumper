@@ -7,7 +7,7 @@
 
 ### Brief description
 
- > Seed jumpoer is a posture recognition jump rope program using a computer vision. In the linked app, you can monitor your exercise status, acquire seeds or plants as a reward for exercise, and decorate your personal garden with the acquired content.
+ > Seed jumpoer is a posture recognition jump rope program using CV libraries. In the linked app, you can monitor your exercise status, acquire seeds or plants as a reward for exercise, and decorate your personal garden with the acquired content.
 
 ### Advisor :
  > Prof. Oh Youngmin
