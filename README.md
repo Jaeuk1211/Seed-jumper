@@ -1,38 +1,43 @@
-# Seed-jumper
-Gachon univ. Dept. of Software Graudation Project
+# Seed Jumper
 
+### [21-1 ~  22-1 Semester] Gachon Univ. Dept. of Software Graduation Project
 
-[21-1 ~  22-1 Semester]
+### Project name
+ > Seed Jumper
 
-project name : Seed Jumper
+### Brief description
 
-#
+ > Seed jumpoer is a posture recognition jump rope program using a computer vision. In the linked app, you can monitor your exercise status, acquire seeds or plants as a reward for exercise, and decorate your personal garden with the acquired content.
 
-[Team members info]
+### Advisor :
+ > Prof. Oh Youngmin
 
-201735820 Jaeuk Kim
+### Project members Info :
 
-201835523 Soomin Jeong
+ > 201735820 Kim Jaeuk
 
-201935118 Suhyeon Lim
+ > 201835523 Jeong Soomin
 
-#
+ > 201935118 Lim Suhyeon
+
+For more detailed information about our project, Please visit 'Wiki' page
 
 <img width="1353" alt="seed" src="https://user-images.githubusercontent.com/76028521/160591845-0ef687cb-d68c-47cf-830f-b0aadd0ac1cd.png">
 
-#
+# Description Video
 
-Idea Proposal :
+### Idea Proposal :
 
 https://www.youtube.com/watch?v=sbCroblgtr0&t=291s
 
-Implementation Presentation : 
+### Implementation Presentation : 
 
 https://www.youtube.com/watch?v=YBO_KQeR8m4&list=LL&index=12&t=394s
 
-#
 
-We refered some insights from >
+# References
+
+### We refered some insights from >
 
 Google Mediapipe : 
 
@@ -41,16 +46,14 @@ https://github.com/google/mediapipe/tree/master/mediapipe
 YouTube Video : Real-Time 3D Pose Detection & Pose Classification | Mediapipe | OpenCV | Python : 
 
 https://www.youtube.com/watch?v=aySurynUNAw&t=897s
-#
 
-We used some icons from
+### We used some icons from >
 
 https://www.flaticon.com/
 
-#
-We used 'YouTube Audio' for the background music
+### We used 'YouTube Audio' for the background music >
 
-The musics we refered are as below
+The musics we referred are as below
 
 1. Pop
     - Level 1 : Wrong [1:44]
